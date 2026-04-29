@@ -1607,6 +1607,47 @@ SPSS : Analyze → Regression → Linear → Dependent: Donation · Independent:
 <strong>Résultat WWF</strong> : B = 0.013, p = .695 → <strong>l'âge ne prédit pas significativement les dons</strong>
 </div>
 
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Effect Size — taille de l'effet ★ EXAMEN ★</h4>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>La p-valeur dit "est-ce que l'effet existe ?" L'effect size dit "est-ce que l'effet est <strong>grand ou trivial</strong> ?" Un résultat peut être significatif (p &lt; 0.05) mais avec un effet microscopique. Les deux sont complémentaires.</p>
+</div>
+<div class="card accent">
+<table>
+<tr><th>Test</th><th>Mesure</th><th>Petit</th><th>Moyen</th><th>Grand</th></tr>
+<tr><td>t-test</td><td><strong>Cohen's d</strong></td><td>0.2</td><td>0.5</td><td>0.8</td></tr>
+<tr><td>ANOVA</td><td><strong>Eta-squared η²</strong></td><td>.01</td><td>.06</td><td>.14</td></tr>
+<tr><td>Régression</td><td><strong>R²</strong></td><td>.02</td><td>.13</td><td>.26</td></tr>
+</table>
+</div>
+<div class="card">
+<strong>SPSS pour η² (ANOVA) :</strong> Options → ✅ Estimates of effect size → SPSS donne Partial Eta Squared dans l'output.<br><br>
+<strong>Cas WWF — Generosity :</strong> F(3,116) = 12.235, p &lt; .001, <em>η² = .24</em> → effet <strong>large</strong> → le visuel de campagne a un effet substantiel sur la générosité.<br><br>
+<strong>Cas WWF — Regression Age :</strong> R² = .001 → l'âge explique 0.1% de la variance → effet <strong>négligeable</strong>.
+</div>
+<div class="callout warning">
+<div class="callout-label">⚠️ À l'examen</div>
+<p>Toujours reporter l'effect size en plus de la p-valeur. Un résultat significatif avec η² = .01 est statistiquement réel mais managérialement non-pertinent.</p>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">ANCOVA — Analysis of Covariance</h4>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>ANOVA teste l'effet de l'IV sur la DV. ANCOVA fait la même chose <strong>en contrôlant l'effet d'une variable de nuisance</strong> (covariate). C'est comme "tenir compte" de l'âge ou du genre avant de comparer les groupes.</p>
+</div>
+<div class="card">
+<strong>Quand :</strong> Quand une variable métrique (âge, revenu, score pré-test) risque de confondre la relation IV → DV.<br>
+<strong>SPSS :</strong> Analyze → General Linear Model → Univariate → Dependent: DV · Fixed factor: IV · Covariate: variable de contrôle<br><br>
+<strong>Cas WWF :</strong> Si l'âge influence la donation ET diffère entre groupes → ANCOVA avec Age en covariate. Output interprété comme ANOVA (Sig., F, η²) mais avec l'effet de l'âge "retiré".
+</div>
+<table>
+<tr><th></th><th>ANOVA</th><th>ANCOVA</th></tr>
+<tr><td><strong>IV</strong></td><td>Nominale (groupes)</td><td>Nominale (groupes)</td></tr>
+<tr><td><strong>DV</strong></td><td>Métrique</td><td>Métrique</td></tr>
+<tr><td><strong>Covariate</strong></td><td>Non</td><td>Oui (métrique)</td></tr>
+<tr><td><strong>Avantage</strong></td><td>Simple</td><td>Réduit l'erreur, contrôle biais</td></tr>
+</table>
+
 <h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Rédiger les résultats — templates APA ★ EXAMEN ★</h4>
 <div class="card accent">
 <strong>ANOVA :</strong><br>
@@ -1615,7 +1656,7 @@ SPSS : Analyze → Regression → Linear → Dependent: Donation · Independent:
 <em>"Tukey post-hoc tests showed that Campaigns 3 and 4 (M = 4.73; M = 3.93) produced significantly higher generosity than Campaigns 1 and 2 (M = 2.0; M = 1.93), p &lt; .01."</em><br><br>
 <strong>Régression :</strong><br>
 <em>"A linear regression showed that age was not a significant predictor of donation amount (β = 0.013, t(118) = 0.393, p = .695)."</em><br><br>
-<strong>Golden rules</strong> : toujours mentionner le test · inclure F/t/β + p-value · reporter M et SD pour effets significatifs · utiliser tableaux.
+<strong>Golden rules</strong> : toujours mentionner le test · inclure F/t/β + p-value · reporter M et SD pour effets significatifs · <strong>inclure l'effect size</strong> (η², d ou R²) · utiliser tableaux.
 </div>
 
 <h3 class="section-title">✅ Test toi sur S6</h3>
@@ -1673,7 +1714,13 @@ const GLOSSARY = [
   {term:"Taguette",def:"Outil gratuit collaboratif de codage qualitatif (app.taguette.org). Workflow : Import → Tag → Review → Export."},
   {term:"Thematic Analysis",def:"Approche qualitative en 6 phases (Braun & Clarke 2006) : familiarisation → codes initiaux → recherche thèmes → révision → définition → rédaction."},
   {term:"Tukey HSD",def:"Honestly Significant Difference (Tukey 1949). Test post-hoc le plus courant et conservateur. Contrôle le family-wise error rate."},
-  {term:"Within-subjects design",def:"Chaque participant voit toutes les conditions. Plus puissant statistiquement mais risque de biais d'ordre."}
+  {term:"Within-subjects design",def:"Chaque participant voit toutes les conditions. Plus puissant statistiquement mais risque de biais d'ordre."},
+  {term:"ANCOVA",def:"Analysis of Covariance. ANOVA + contrôle d'une covariate métrique (ex : âge, revenu). SPSS : GLM → Univariate. Réduit l'erreur résiduelle, contrôle les biais pré-existants."},
+  {term:"Cohen's d",def:"Mesure de l'effect size pour un t-test. Seuils : 0.2 = petit, 0.5 = moyen, 0.8 = grand (Cohen, 1988)."},
+  {term:"Effect Size",def:"Magnitude de l'effet, indépendante de la taille de l'échantillon. Cohen's d (t-test) · Eta-squared η² (ANOVA) · R² (régression). Complémentaire de la p-valeur."},
+  {term:"Eta-squared (η²)",def:"Effect size pour l'ANOVA. Proportion de variance de la DV expliquée par l'IV. Seuils : .01 petit, .06 moyen, .14 grand (Cohen, 1988)."},
+  {term:"Shapiro-Wilk Test",def:"Test de normalité. p > 0.05 = distribution normale (assumption met). p < 0.05 → envisager test non-paramétrique. SPSS : Analyze → Descriptive → Explore."},
+  {term:"Welch's ANOVA",def:"Version robuste de l'ANOVA quand les variances ne sont pas égales entre groupes (Levene p < 0.05). SPSS : One-Way ANOVA → Options → Welch test."}
 ];
 
 VIEWS.glossary = `
@@ -1740,7 +1787,12 @@ const FLASHCARDS = [
   {q:"Pourquoi l'inter-coder reliability est-elle importante ?",a:"Deux chercheurs codent les mêmes données <strong>indépendamment</strong>. Un accord élevé montre que les thèmes ne dépendent pas de l'interprétation d'une seule personne → rend l'analyse plus <strong>crédible et reproductible</strong>."},
   {q:"Comment rapporter des résultats qualitatifs avec des citations ?",a:"Illustrer chaque thème avec des <strong>citations verbatim</strong> de participants.<br>Référencer anonymement : P1, P2…<br>Ne pas surestimer : <em>'Several participants mentioned...'</em> plutôt que <em>'All agreed...'</em>."},
   {q:"Phases 3 et 4 de Braun & Clarke : quelle est la différence ?",a:"<strong>Phase 3</strong> = Recherche de thèmes : regrouper les codes en thèmes potentiels (travail d'organisation).<br><strong>Phase 4</strong> = Révision : vérifier que chaque thème est cohérent <em>en interne</em> et reflète bien le dataset entier."},
-  {q:"Quels sont les 6 types d'échantillonnage quanti vus en cours ?",a:"<strong>Probability</strong> : (1) Simple Random · (2) Stratified · (3) Systematic.<br><strong>Non-probability</strong> : (4) Convenience · (5) Judgmental · (6) Quota."}
+  {q:"Quels sont les 6 types d'échantillonnage quanti vus en cours ?",a:"<strong>Probability</strong> : (1) Simple Random · (2) Stratified · (3) Systematic.<br><strong>Non-probability</strong> : (4) Convenience · (5) Judgmental · (6) Quota."},
+  {q:"Quels sont les seuils de Cohen's d (t-test effect size) ?",a:"<strong>0.2</strong> = petit · <strong>0.5</strong> = moyen · <strong>0.8</strong> = grand (Cohen, 1988).<br>Mémo : 2-5-8."},
+  {q:"Quels sont les seuils de η² (eta-squared, ANOVA effect size) ?",a:"<strong>.01</strong> = petit · <strong>.06</strong> = moyen · <strong>.14</strong> = grand (Cohen, 1988).<br>SPSS : Options → Estimates of effect size."},
+  {q:"Quelle est la différence entre ANOVA et ANCOVA ?",a:"<strong>ANOVA</strong> : teste l'effet d'une IV nominale sur une DV métrique.<br><strong>ANCOVA</strong> : même chose mais <em>en contrôlant</em> une covariate métrique (ex : âge, genre). Réduit l'erreur résiduelle et retire le biais de la covariate."},
+  {q:"Dans le cas WWF, pourquoi utiliserait-on une ANCOVA ?",a:"Parce que <strong>l'âge et le genre</strong> sont des covariates potentiels : s'ils influencent les dons ET diffèrent entre groupes, ils biaisent la comparaison. L'ANCOVA 'retire' leur effet avant de tester l'impact du visuel."},
+  {q:"p-valeur vs effect size : quelle différence ?",a:"<strong>p-valeur</strong> : l'effet est-il réel (non dû au hasard) ? Dépend de n.<br><strong>Effect size</strong> (d, η², R²) : l'effet est-il <em>grand</em> ? Indépendant de n.<br>Un grand n peut rendre tiny effects significatifs → toujours reporter les deux."}
 ];
 
 VIEWS.flashcards = `
@@ -1849,7 +1901,13 @@ const QUIZ = [
   {q:"Quelle méthode de sampling utilise des quotas par sous-groupe mais sans tirage aléatoire ?",opts:["Stratified random sampling","Systematic sampling","Quota sampling","Simple random sampling"],correct:2,exp:"Quota sampling = non-probability : on fixe des quotas (ex : 50 hommes, 50 femmes) mais le choix des individus dans chaque quota est non aléatoire. À distinguer du stratified random (aléatoire dans chaque strate)."},
   {q:"Quelle section du rapport Matrix discute des limites de la recherche ?",opts:["Section 2 (Design)","Section 4 (Interprétation)","Section 6 (Limitations)","Section 8 (Contributions)"],correct:2,exp:"Section 6 = Limitations : discuter des faiblesses (taille d'échantillon, validité externe, biais potentiels). Les 8 sections : Intro · Design · Analyses · Interprétation · Conclusions · Limitations · Références · Contributions."},
   {q:"Quelle est l'approche de sampling utilisée dans le projet Matrix WWF ?",opts:["Stratified random sampling","Simple random sampling","Convenience sampling","Systematic sampling"],correct:2,exp:"Le projet Matrix utilise convenience sampling (non-probability) — recruter des participants accessibles. Pratique mais limite la généralisation. Mentionner en Limitations du rapport."},
-  {q:"Dans le contexte d'une expérience, quelle est la différence entre 'manipulation check' et 'attention check' ?",opts:["Ils sont identiques","Manipulation check = la manipulation a été perçue ; attention check = le participant a lu les questions","Attention check = validité interne ; manipulation check = validité externe","Le manipulation check se fait avant la VD"],correct:1,exp:"Manipulation check : vérifie que le participant a bien perçu la condition (ex : 'Which campaign did you see?'). Attention check : vérifie que le participant a lu les questions. Tous deux placés APRÈS la VD."}
+  {q:"Dans le contexte d'une expérience, quelle est la différence entre 'manipulation check' et 'attention check' ?",opts:["Ils sont identiques","Manipulation check = la manipulation a été perçue ; attention check = le participant a lu les questions","Attention check = validité interne ; manipulation check = validité externe","Le manipulation check se fait avant la VD"],correct:1,exp:"Manipulation check : vérifie que le participant a bien perçu la condition (ex : 'Which campaign did you see?'). Attention check : vérifie que le participant a lu les questions. Tous deux placés APRÈS la VD."},
+  {q:"Qu'est-ce que l'eta-squared (η²) et comment l'interpréter ?",opts:["La p-valeur de l'ANOVA","La proportion de variance de la DV expliquée par l'IV (.01=petit, .06=moyen, .14=grand)","Le nombre de degrés de liberté","La différence de moyennes entre groupes"],correct:1,exp:"η² = effect size pour l'ANOVA. .01 = petit, .06 = moyen, .14 = grand (Cohen 1988). Se trouve dans SPSS via Options → Estimates of effect size."},
+  {q:"Un ANOVA donne F(3,116)=12.24, p<.001, η²=.24. Que conclure sur l'effect size ?",opts:["Effet petit","Effet moyen","Effet large (η²>.14)","Pas d'effet significatif"],correct:2,exp:"η² = .24 > .14 → effet large selon les seuils de Cohen (1988). Le visuel de campagne explique 24% de la variance de la générosité — effet substantiel."},
+  {q:"Quand utilise-t-on une ANCOVA plutôt qu'une ANOVA ?",opts:["Quand on a 2 IV au lieu d'une","Quand la DV est nominale","Quand une variable métrique (covariate) risque de confondre la relation IV→DV","Quand Levene p < 0.05"],correct:2,exp:"ANCOVA = ANOVA + contrôle d'une covariate métrique. Ex WWF : si l'âge influence les dons ET diffère entre groupes, ANCOVA permet de retirer l'effet de l'âge avant de comparer les conditions."},
+  {q:"Cohen's d = 0.6 pour un t-test comparant deux campagnes. C'est un effet de quelle taille ?",opts:["Petit (d=0.2)","Moyen (d=0.5)","Grand (d=0.8)","Moyen à grand (entre 0.5 et 0.8)"],correct:3,exp:"d = 0.6 est entre les seuils 'moyen' (0.5) et 'grand' (0.8) de Cohen. On dirait 'un effet de taille moyenne à grande'."},
+  {q:"Pourquoi reporter l'effect size en plus de la p-valeur ?",opts:["Pour remplacer la p-valeur","Parce que la p-valeur dépend de n et peut être significative pour des effets triviaux","Pour vérifier les assumptions","Pour calculer Cronbach's alpha"],correct:1,exp:"Avec un grand n, même un effet négligeable peut être p<.05. L'effect size (η², d, R²) mesure la magnitude réelle indépendamment de n. Les deux sont complémentaires."},
+  {q:"Dans SPSS, comment obtenir l'eta-squared pour une ANOVA ?",opts:["Analyze → Reliability → Alpha","One-Way ANOVA → Options → Estimates of effect size","Analyze → Regression → Linear","Analyze → Descriptive → Explore"],correct:1,exp:"SPSS : One-Way ANOVA → Options → cocher 'Estimates of effect size'. Donne le Partial Eta Squared dans l'output ANOVA."}
 ];
 
 VIEWS.quiz = `
@@ -1880,14 +1938,19 @@ const TREES = {
       ]},
       q2:{type:'q',text:'Combien de groupes / conditions ?',path:'IV nominale',choices:[
         {label:'2 groupes\n(ex: contrôle vs traitement)',next:'q3'},
-        {label:'3 groupes ou plus\n(ex: 4 conditions WWF)',next:'r_anova'}
+        {label:'3 groupes ou plus\n(ex: 4 conditions WWF)',next:'q4'}
+      ]},
+      q4:{type:'q',text:'Levene\'s test : les variances sont-elles égales ?',path:'IV nominale → 3+ groupes',choices:[
+        {label:'OUI — Levene p > 0.05\n(variances homogènes)',next:'r_anova'},
+        {label:'NON — Levene p < 0.05\n(variances inégales)',next:'r_welch'}
       ]},
       q3:{type:'q',text:'Quel est le type de ta variable dépendante (DV) ?',path:'IV nominale → 2 groupes',choices:[
         {label:'Métrique / Intervalle\n(ex: score Likert, €)',next:'r_ttest'},
         {label:'Nominale / Binaire\n(ex: achète vs achète pas)',next:'r_chi2'}
       ]},
       r_ttest:{type:'r',test:'T-TEST INDÉPENDANT',format:'t(df) = X.XX, p = .XX',when:'<strong>IV nominale (2 groupes)</strong> × <strong>DV métrique</strong>.<br>Ex : comparer le score de culpabilité entre exposés et non-exposés.',pkg:'SPSS → Analyze → Compare Means → Independent-Samples T Test'},
-      r_anova:{type:'r',test:'ONE-WAY ANOVA',format:'F(df1, df2) = X.XX, p = .XX',when:'<strong>IV nominale (3+ groupes)</strong> × <strong>DV métrique</strong>.<br>Ex : cas WWF → F(3,116) = 4.10, p = .008. Si significatif → post-hoc <strong>Tukey HSD</strong>.',pkg:'SPSS → Analyze → Compare Means → One-Way ANOVA → Post Hoc → Tukey'},
+      r_anova:{type:'r',test:'ONE-WAY ANOVA',format:'F(df1, df2) = X.XX, p = .XX, η² = .XX',when:'<strong>IV nominale (3+ groupes)</strong> × <strong>DV métrique</strong> · variances égales (Levene p > .05).<br>Ex : cas WWF → F(3,116) = 4.10, p = .008, η² = .24. Si significatif → post-hoc <strong>Tukey HSD</strong>.',pkg:'SPSS → Compare Means → One-Way ANOVA → Post Hoc: Tukey · Options: Effect size'},
+      r_welch:{type:'r',test:"WELCH'S ANOVA",format:'F(df1, df2) = X.XX, p = .XX',when:'<strong>IV nominale (3+ groupes)</strong> × <strong>DV métrique</strong> · variances <em>inégales</em> (Levene p &lt; .05).<br>Version robuste de l\'ANOVA qui ne suppose pas l\'homogénéité des variances. Post-hoc : <strong>Games-Howell</strong> (à la place de Tukey).',pkg:"SPSS → Compare Means → One-Way ANOVA → Options → Welch"},
       r_reg:{type:'r',test:'RÉGRESSION LINÉAIRE',format:'β = X.XX, t(df) = X.XX, p = .XX, R² = .XX',when:'<strong>IV métrique</strong> → <strong>DV métrique</strong>.<br>Prédit une variable continue à partir d\'une ou plusieurs autres. R² en sciences sociales souvent 0.02–0.15.',pkg:'SPSS → Analyze → Regression → Linear'},
       r_chi:{type:'r',test:'CHI-SQUARE (χ²)',format:'χ²(df, N=XX) = X.XX, p = .XX',when:'<strong>2 variables nominales</strong>.<br>Ex : tester si le genre est associé au type de produit choisi. Pas de relation de causalité.',pkg:'SPSS → Analyze → Descriptive Statistics → Crosstabs → Statistics → Chi-square'},
       r_chi2:{type:'r',test:'CHI-SQUARE (χ²)',format:'χ²(df, N=XX) = X.XX, p = .XX',when:'<strong>IV nominale (2 gr.)</strong> × <strong>DV binaire</strong>.<br>Ou test de proportion. Pas de relation causale.',pkg:'SPSS → Analyze → Descriptive Statistics → Crosstabs → Statistics → Chi-square'}
@@ -2151,10 +2214,11 @@ function renderTreeNode(nodeId){
   const out=document.getElementById('tree-output'); if(!out)return;
   const node=activeTree.nodes[nodeId];
   if(!node){out.innerHTML='<p>Nœud introuvable.</p>';return;}
+  const backBtn=treeHistory.length>0?`<button class="dt-reset" onclick="treeBack()" style="margin-right:8px">← RETOUR</button>`:'';
   if(node.type==='q'){
     out.innerHTML=`
       <div class="tree-wrap">
-        <button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button>
+        <div style="margin-bottom:12px">${backBtn}<button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button></div>
         <div class="dt-question">
           ${node.path?`<div class="dt-path">${node.path}</div>`:''}
           <h4>${node.text}</h4>
@@ -2166,7 +2230,7 @@ function renderTreeNode(nodeId){
   } else {
     out.innerHTML=`
       <div class="tree-wrap">
-        <button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button>
+        <div style="margin-bottom:12px">${backBtn}<button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button></div>
         <div class="dt-result">
           <div class="res-label">✓ Ton test / ta méthode</div>
           <div class="res-test">${node.test}</div>
@@ -2180,6 +2244,10 @@ function renderTreeNode(nodeId){
 function treeChoose(nextId,fromId){
   treeHistory.push(fromId);
   renderTreeNode(nextId);
+}
+function treeBack(){
+  if(treeHistory.length===0)return;
+  renderTreeNode(treeHistory.pop());
 }
 function resetTree(){
   treeHistory=[];
