@@ -626,6 +626,75 @@ footer .unleash{
   .card,.callout{break-inside:avoid}
   body{background:#fff}
 }
+
+/* DECISION TREES */
+.tree-wrap{max-width:720px;margin:0 auto}
+.dt-reset{float:right;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);background:none;border:1px solid var(--border);padding:6px 12px;cursor:pointer;font-family:inherit}
+.dt-reset:hover{color:var(--burgundy);border-color:var(--burgundy)}
+.dt-question{background:var(--burgundy);color:#fff;padding:28px 32px;margin:24px 0}
+.dt-question h4{font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:4px;letter-spacing:0.02em}
+.dt-question .dt-path{font-size:10px;font-weight:600;letter-spacing:0.15em;opacity:.7;text-transform:uppercase;margin-bottom:16px}
+.dt-choices{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.dt-btn{background:#fff;color:var(--burgundy);border:none;padding:14px 22px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.08em;transition:.15s;text-align:left;line-height:1.3}
+.dt-btn:hover{background:var(--yellow)}
+.dt-result{background:#fff;border:3px solid var(--burgundy);padding:28px 32px;margin:24px 0;animation:fadeIn .3s ease}
+.dt-result .res-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--green);margin-bottom:8px}
+.dt-result .res-test{font-size:32px;font-weight:900;text-transform:uppercase;color:var(--burgundy);margin-bottom:12px;letter-spacing:-0.01em;line-height:1.1}
+.dt-result .res-format{font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--cream);padding:10px 14px;color:var(--burgundy-dark);margin:14px 0}
+.dt-result .res-when{font-size:14px;color:var(--ink);line-height:1.6}
+.dt-result .res-when strong{color:var(--burgundy)}
+
+/* SPACED REPETITION */
+.sr-filter{display:flex;gap:8px;margin-bottom:16px;justify-content:center}
+.sr-filter button{background:none;border:1px solid var(--border);padding:9px 18px;font-family:inherit;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;color:var(--muted);transition:.15s}
+.sr-filter button.active{background:var(--burgundy);color:#fff;border-color:var(--burgundy)}
+.sr-stats{text-align:center;margin-bottom:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);display:flex;gap:16px;justify-content:center}
+.sr-stats .s-know{color:var(--green)}.sr-stats .s-rev{color:var(--red)}
+.sr-controls{display:flex;gap:10px;justify-content:center;margin-top:18px}
+.sr-know{background:var(--green);color:#fff;border:none;padding:13px 26px;font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;transition:.15s}
+.sr-know:hover{filter:brightness(0.9)}
+.sr-redo{background:var(--red);color:#fff;border:none;padding:13px 26px;font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;transition:.15s}
+.sr-redo:hover{filter:brightness(0.9)}
+.fc-sr-badge{
+  display:inline-block;
+  font-size:10px;font-weight:800;
+  padding:2px 7px;
+  margin-left:6px;
+  vertical-align:middle;
+}
+.fc-known .fc-inner .fc-front{background:var(--green)}
+.fc-to-review .fc-inner .fc-front{background:var(--red)}
+
+/* QUICK DRILL */
+.drill-hero{background:var(--burgundy);color:#fff;padding:32px;margin-bottom:28px;text-align:center;position:relative}
+.drill-hero::before{content:'';position:absolute;top:0;right:0;width:60px;height:30px;background:var(--yellow)}
+.drill-hero .kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--yellow);margin-bottom:8px}
+.drill-hero h3{font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em}
+.drill-progress{background:var(--cream);height:8px;margin:20px 0}
+.drill-bar{background:var(--burgundy);height:8px;transition:width .4s ease;min-width:4px}
+.drill-q-wrap{background:#fff;border:1px solid var(--border);padding:28px 32px;margin:0 0 20px}
+.drill-q-num{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:10px}
+.drill-q-txt{font-size:18px;font-weight:700;line-height:1.4;margin-bottom:20px;color:var(--ink)}
+.drill-end{text-align:center;padding:48px 32px}
+.drill-score-big{font-size:72px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--burgundy);display:block;line-height:1}
+.drill-score-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-top:8px}
+.drill-msg{font-size:18px;font-weight:700;margin:24px 0;color:var(--ink)}
+
+/* READINESS in header */
+.readiness-wrap{
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--burgundy);
+  border-left:3px solid var(--burgundy);
+  padding-left:12px;
+  white-space:nowrap;
+}
+.readiness-pct{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--burgundy);display:block;line-height:1.2}
+.readiness-wrap small{display:block;color:var(--muted);font-weight:500;letter-spacing:0.05em;margin-top:2px;font-size:9px}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;width:8px;height:8px;top:-12px;opacity:0;pointer-events:none;z-index:9999;animation:cffall 2.5s ease-in forwards}
+@keyframes cffall{0%{opacity:1;top:-12px;transform:rotate(0deg) translateX(0)}50%{opacity:1}100%{opacity:0;top:100vh;transform:rotate(540deg) translateX(60px)}}
 </style>
 </head>
 <body>
@@ -641,6 +710,11 @@ footer .unleash{
   <div class="search-wrap">
     <span class="search-icon">⌕</span>
     <input class="search" id="search" placeholder="RECHERCHER (CRONBACH, ANOVA, BIAIS...)"/>
+  </div>
+  <div class="readiness-wrap" id="readiness-header">
+    <span class="readiness-pct" id="readiness-pct">0%</span>
+    EXAM READINESS
+    <small id="readiness-sub">0 QCM RÉPONDUS</small>
   </div>
   <div class="exam-countdown" id="countdown">
     EXAMEN FINAL
@@ -666,8 +740,10 @@ const SESSIONS = [
   {id:'s3',label:'S3 · Pratique',badge:'V1'},
   {id:'s4',label:'S4 · Qualtrics',badge:'WIP'},
   {id:'s6',label:'S6 · Analyse',badge:'WIP'},
+  {id:'trees',label:'Arbres ▸'},
   {id:'glossary',label:'Glossaire'},
   {id:'flashcards',label:'Flashcards'},
+  {id:'drill',label:'⚡ Drill'},
   {id:'quiz',label:'Quiz examen'}
 ];
 
@@ -687,12 +763,11 @@ VIEWS.home = `
 <h3 class="section-title">Ta progression</h3>
 <div class="progress-grid">
   ${[['s1','S1','Quali'],['s2','S2','Quanti'],['s3','S3','Pratique'],['s4','S4','Qualtrics'],['s6','S6','Analyse']].map(([id,name,desc])=>{
-    const p=PROGRESS[id]||0;
-    const r=32,c=2*Math.PI*r,off=c*(1-p/100);
+    const r=32,c=2*Math.PI*r,off=c;
     return `<div class="progress-card" onclick="go('${id}')">
       <div class="progress-ring">
-        <svg width="80" height="80"><circle cx="40" cy="40" r="${r}" class="bg"/><circle cx="40" cy="40" r="${r}" class="fg" stroke-dasharray="${c}" stroke-dashoffset="${off}"/></svg>
-        <div class="pct">${p}%</div>
+        <svg width="80" height="80"><circle cx="40" cy="40" r="${r}" class="bg"/><circle id="progress-ring-${id}" cx="40" cy="40" r="${r}" class="fg" stroke-dasharray="${c}" stroke-dashoffset="${off}"/></svg>
+        <div class="pct" id="progress-pct-${id}">0%</div>
       </div>
       <div class="name">${name}</div>
       <div class="desc">${desc}</div>
@@ -1290,14 +1365,26 @@ const FLASHCARDS = [
 
 VIEWS.flashcards = `
 <h2 class="session-title">Flashcards</h2>
-<div class="session-meta">${FLASHCARDS.length} CARTES · MÉMORISATION ACTIVE</div>
-<p class="lede">Cliquer sur la carte pour la retourner. La mémorisation active est <strong>scientifiquement supérieure</strong> à la relecture passive.</p>
+<div class="session-meta">${FLASHCARDS.length} CARTES · MÉMORISATION ACTIVE + SPACED REPETITION</div>
+<p class="lede">Retourne la carte, puis marque si tu sais ou pas. Les cartes "à revoir" remontent automatiquement.</p>
 
 <div class="fc-container">
+<div class="sr-stats" id="sr-stats">
+  <span class="s-know">✓ <span id="sr-known">0</span> sues</span>
+  <span>·</span>
+  <span class="s-rev">✗ <span id="sr-review">0</span> à revoir</span>
+  <span>·</span>
+  <span><span id="sr-unseen">0</span> non vues</span>
+</div>
+<div class="sr-filter" id="sr-filter">
+  <button class="active" onclick="setSRMode('all',this)">TOUTES</button>
+  <button onclick="setSRMode('review',this)">À REVOIR</button>
+  <button onclick="setSRMode('unseen',this)">NON VUES</button>
+</div>
 <div class="flashcard" id="fc" onclick="flipCard()">
   <div class="fc-inner">
     <div class="fc-face fc-front">
-      <div class="kicker">QUESTION</div>
+      <div class="kicker" id="fc-kicker">QUESTION</div>
       <div class="question" id="fc-q">…</div>
       <div class="hint">Cliquer pour retourner</div>
     </div>
@@ -1307,9 +1394,13 @@ VIEWS.flashcards = `
     </div>
   </div>
 </div>
-<div class="fc-controls">
+<div class="sr-controls">
+  <button class="sr-redo" onclick="rateCard('review',event)">✗ À REVOIR</button>
+  <button class="sr-know" onclick="rateCard('know',event)">✓ JE SAIS</button>
+</div>
+<div class="fc-controls" style="margin-top:12px">
   <button class="btn ghost sm" onclick="prevCard(event)">← PRÉC.</button>
-  <span class="fc-counter"><strong id="fc-i">1</strong> / ${FLASHCARDS.length}</span>
+  <span class="fc-counter"><strong id="fc-i">1</strong> / <span id="fc-total">${FLASHCARDS.length}</span></span>
   <button class="btn sm" onclick="nextCard(event)">SUIV. →</button>
 </div>
 <div style="margin-top:12px;text-align:center"><button class="btn ghost sm" onclick="shuffleCards()">⤭ MÉLANGER</button></div>
@@ -1362,7 +1453,139 @@ VIEWS.quiz = `
 </div>
 `;
 
-// ============ APP LOGIC ============
+// ============ DECISION TREES ============
+const TREES = {
+  stat: {
+    id:'stat',
+    label:'Choisir ton test statistique',
+    start:'q1',
+    nodes:{
+      q1:{type:'q',text:'Quel est le type de ta variable indépendante (IV) ?',path:'',choices:[
+        {label:'Nominale / Catégorielle\n(ex: condition A vs B vs C)',next:'q2'},
+        {label:'Métrique / Continue\n(ex: âge, score, prix)',next:'r_reg'},
+        {label:'2 variables nominales\n(ex: genre × préférence)',next:'r_chi'}
+      ]},
+      q2:{type:'q',text:'Combien de groupes / conditions ?',path:'IV nominale',choices:[
+        {label:'2 groupes\n(ex: contrôle vs traitement)',next:'q3'},
+        {label:'3 groupes ou plus\n(ex: 4 conditions WWF)',next:'r_anova'}
+      ]},
+      q3:{type:'q',text:'Quel est le type de ta variable dépendante (DV) ?',path:'IV nominale → 2 groupes',choices:[
+        {label:'Métrique / Intervalle\n(ex: score Likert, €)',next:'r_ttest'},
+        {label:'Nominale / Binaire\n(ex: achète vs achète pas)',next:'r_chi2'}
+      ]},
+      r_ttest:{type:'r',test:'T-TEST INDÉPENDANT',format:'t(df) = X.XX, p = .XX',when:'<strong>IV nominale (2 groupes)</strong> × <strong>DV métrique</strong>.<br>Ex : comparer le score de culpabilité entre exposés et non-exposés.',pkg:'SPSS → Analyze → Compare Means → Independent-Samples T Test'},
+      r_anova:{type:'r',test:'ONE-WAY ANOVA',format:'F(df1, df2) = X.XX, p = .XX',when:'<strong>IV nominale (3+ groupes)</strong> × <strong>DV métrique</strong>.<br>Ex : cas WWF → F(3,116) = 4.10, p = .008. Si significatif → post-hoc <strong>Tukey HSD</strong>.',pkg:'SPSS → Analyze → Compare Means → One-Way ANOVA → Post Hoc → Tukey'},
+      r_reg:{type:'r',test:'RÉGRESSION LINÉAIRE',format:'β = X.XX, t(df) = X.XX, p = .XX, R² = .XX',when:'<strong>IV métrique</strong> → <strong>DV métrique</strong>.<br>Prédit une variable continue à partir d\'une ou plusieurs autres. R² en sciences sociales souvent 0.02–0.15.',pkg:'SPSS → Analyze → Regression → Linear'},
+      r_chi:{type:'r',test:'CHI-SQUARE (χ²)',format:'χ²(df, N=XX) = X.XX, p = .XX',when:'<strong>2 variables nominales</strong>.<br>Ex : tester si le genre est associé au type de produit choisi. Pas de relation de causalité.',pkg:'SPSS → Analyze → Descriptive Statistics → Crosstabs → Statistics → Chi-square'},
+      r_chi2:{type:'r',test:'CHI-SQUARE (χ²)',format:'χ²(df, N=XX) = X.XX, p = .XX',when:'<strong>IV nominale (2 gr.)</strong> × <strong>DV binaire</strong>.<br>Ou test de proportion. Pas de relation causale.',pkg:'SPSS → Analyze → Descriptive Statistics → Crosstabs → Statistics → Chi-square'}
+    }
+  },
+  method: {
+    id:'method',
+    label:'Choisir ta méthode de collecte',
+    start:'m1',
+    nodes:{
+      m1:{type:'q',text:'Quel est ton objectif principal ?',path:'',choices:[
+        {label:'Explorer / Comprendre POURQUOI\n(insight, motivations, vécu)',next:'m2'},
+        {label:'Mesurer / Tester une hypothèse\n(chiffres, relations, causalité)',next:'m3'}
+      ]},
+      m2:{type:'q',text:'Qu\'est-ce qui t\'intéresse davantage ?',path:'Objectif exploratoire',choices:[
+        {label:'Profondeur individuelle\n(expérience personnelle, récit)',next:'r_interview'},
+        {label:'Dynamique de groupe\n(opinions collectives, consensus)',next:'r_focus'}
+      ]},
+      m3:{type:'q',text:'As-tu besoin d\'établir la causalité ?',path:'Objectif confirmatoire',choices:[
+        {label:'OUI — X cause Y\n(je manipule une variable)',next:'r_exp'},
+        {label:'NON — mesurer des relations\n(corrélations, attitudes)',next:'r_survey'}
+      ]},
+      r_interview:{type:'r',test:'INTERVIEW EN PROFONDEUR',format:'Semi-structuré recommandé · Guide 7 étapes',when:'<strong>Qualitatif individuel.</strong> Idéal pour explorer le vécu, les motivations profondes. 6–15 participants, jusqu\'à la <strong>data saturation</strong>. Enregistrer + retranscrire + coder (Taguette).',pkg:'S1 · Thematic Analysis (Braun & Clarke 2006)'},
+      r_focus:{type:'r',test:'FOCUS GROUP',format:'6–10 participants · 60–120 min · 1 modérateur + 1 observateur',when:'<strong>Qualitatif collectif.</strong> Idéal pour explorer les opinions et comment elles se forment dans le groupe. 3–5 sessions recommandées.',pkg:'S1 · Discussion guide 7 étapes'},
+      r_exp:{type:'r',test:'EXPÉRIENCE (Qualtrics)',format:'Between-subjects recommandé · Random assignment',when:'<strong>Quantitatif causal.</strong> Manipuler l\'IV, mesurer la DV. Les <strong>3 piliers</strong> : manipulation IV + assignation aléatoire + contrôle variables externes. Cas WWF : 4 conditions, 30 par condition.',pkg:'S2 + S4 · Qualtrics'},
+      r_survey:{type:'r',test:'SURVEY',format:'Likert 7 pts · Cronbach α ≥ 0.7',when:'<strong>Quantitatif relationnel.</strong> Mesure des construits, attitudes, corrélations. Ne prouve pas la causalité. Structure en 7 blocs. Checks qualité APRÈS la DV.',pkg:'S2 · Qualtrics'}
+    }
+  }
+};
+
+VIEWS.trees = `
+<h2 class="session-title">Arbres de Décision</h2>
+<div class="session-meta">CHOISIR TA MÉTHODE · CHOISIR TON TEST STAT</div>
+<p class="lede">Tu veux savoir quel test faire ou quelle méthode utiliser ? Navigue dans l'arbre — il t'amène directement au bon outil avec le format de reporting SPSS.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0">
+  <button class="toc-card" onclick="startTree('stat')">
+    <div class="num">Arbre A</div>
+    <div class="title">Choisir ton test stat</div>
+    <div class="desc">T-test, ANOVA, Régression, Chi-square — en 3 clics</div>
+  </button>
+  <button class="toc-card" onclick="startTree('method')">
+    <div class="num">Arbre B</div>
+    <div class="title">Choisir ta méthode</div>
+    <div class="desc">Interview, Focus group, Expérience, Survey</div>
+  </button>
+</div>
+<div id="tree-output"></div>
+`;
+
+VIEWS.drill = `
+<h2 class="session-title">⚡ Quick Drill</h2>
+<div class="session-meta">5 QUESTIONS ALÉATOIRES · FEEDBACK IMMÉDIAT</div>
+<p class="lede">Mode ultra-rapide : 5 QCM chronométrés, réponse immédiate, score final. Idéal pour s'échauffer avant l'exam.</p>
+<div id="drill-root">
+  <div style="text-align:center;padding:48px 0">
+    <div style="font-size:64px;margin-bottom:16px">⚡</div>
+    <p style="font-size:18px;font-weight:700;margin-bottom:24px;color:var(--ink)">5 questions tirées aléatoirement du quiz</p>
+    <button class="btn" onclick="startDrill()">DÉMARRER LE DRILL</button>
+    <div style="margin-top:12px"><button class="btn ghost sm" onclick="startDrill(10)">10 QUESTIONS</button></div>
+  </div>
+</div>
+`;
+
+// ============ LOCALSTORAGE ============
+const LS_QUIZ = 'mktval_quiz_v2';
+const LS_SR   = 'mktval_sr_v2';
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch{return{}}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+
+// ============ MASTERY / READINESS ============
+function computeReadiness(){
+  const saved = lsGet(LS_QUIZ);
+  const total = Object.keys(saved).length;
+  const correct = Object.entries(saved).filter(([k,v])=>QUIZ[+k]&&QUIZ[+k].correct===v).length;
+  const pct = total>0 ? Math.round(correct/total*100) : 0;
+  const el = document.getElementById('readiness-pct');
+  const sub = document.getElementById('readiness-sub');
+  if(el) el.textContent = pct+'%';
+  if(sub) sub.textContent = total+' / '+QUIZ.length+' QCM RÉPONDUS';
+  // Update rings on home
+  if(document.getElementById('progress-ring-s1')){
+    const sess = {s1:[0,6],s2:[6,20],s3:[20,23]};
+    Object.entries(sess).forEach(([id,[from,to]])=>{
+      let s=0,c=0;
+      for(let i=from;i<to;i++){if(saved[i]!==undefined){s++;if(QUIZ[i].correct===saved[i])c++;}}
+      const p=s>0?Math.round(c/s*100):0;
+      const ring=document.getElementById('progress-ring-'+id);
+      const pctEl=document.getElementById('progress-pct-'+id);
+      if(ring&&pctEl){
+        const r=32,circ=2*Math.PI*r;
+        ring.style.strokeDashoffset=circ*(1-p/100);
+        pctEl.textContent=p+'%';
+      }
+    });
+  }
+  return {pct,total,correct};
+}
+
+// ============ CONFETTI ============
+function confetti(){
+  const colors=['#5E1937','#F7C642','#00B894','#fff','#3F0F23','#7A2447'];
+  for(let i=0;i<80;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.cssText=`left:${Math.random()*100}vw;background:${colors[i%colors.length]};animation-delay:${Math.random()*1.5}s;animation-duration:${2+Math.random()*1.5}s;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px`;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),4000);
+  }
+}
+
+// ============ APP NAV ============
 function buildNav(){
   document.getElementById('nav').innerHTML = SESSIONS.map(s=>{
     const badge = s.badge ? `<span class="badge">${s.badge}</span>` : '';
@@ -1376,10 +1599,13 @@ function go(id){
   if(id==='glossary')renderGlossary('');
   if(id==='flashcards')initFlashcards();
   if(id==='quiz')renderQuiz();
+  if(id==='drill')initDrill();
+  if(id==='trees'){}
+  if(id==='home')setTimeout(computeReadiness,50);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Glossary
+// ============ GLOSSARY ============
 function renderGlossary(filter){
   const list = document.getElementById('gloss-list');
   if(!list)return;
@@ -1390,68 +1616,239 @@ function renderGlossary(filter){
     : '<p class="lede">Aucun résultat.</p>';
 }
 
-// Flashcards
-let fcIdx=0, fcOrder=[...Array(FLASHCARDS.length).keys()];
-function initFlashcards(){fcIdx=0;renderCard()}
+// ============ FLASHCARDS + SPACED REPETITION ============
+let fcIdx=0, fcOrder=[...Array(FLASHCARDS.length).keys()], fcMode='all';
+function initFlashcards(){
+  fcIdx=0;
+  fcMode='all';
+  rebuildFCOrder();
+  renderCard();
+  updateSRStats();
+}
+function rebuildFCOrder(){
+  const sr=lsGet(LS_SR);
+  if(fcMode==='all') fcOrder=[...Array(FLASHCARDS.length).keys()];
+  else if(fcMode==='review') fcOrder=Object.keys(sr).filter(k=>sr[k]==='review').map(Number);
+  else if(fcMode==='unseen') fcOrder=[...Array(FLASHCARDS.length).keys()].filter(i=>!sr[i]);
+  if(!fcOrder.length) fcOrder=[...Array(FLASHCARDS.length).keys()];
+  fcIdx=0;
+}
 function renderCard(){
-  const card = FLASHCARDS[fcOrder[fcIdx]];
-  const el = document.getElementById('fc'); if(!el)return;
-  el.classList.remove('flipped');
-  document.getElementById('fc-q').innerHTML = card.q;
-  document.getElementById('fc-a').innerHTML = card.a;
-  document.getElementById('fc-i').textContent = fcIdx+1;
+  const realIdx=fcOrder[fcIdx%fcOrder.length];
+  const card=FLASHCARDS[realIdx];
+  const el=document.getElementById('fc'); if(!el)return;
+  const sr=lsGet(LS_SR);
+  el.classList.remove('flipped','fc-known','fc-to-review');
+  if(sr[realIdx]==='know') el.classList.add('fc-known');
+  if(sr[realIdx]==='review') el.classList.add('fc-to-review');
+  const kicker=document.getElementById('fc-kicker');
+  if(kicker){
+    if(sr[realIdx]==='know') kicker.textContent='✓ SUE';
+    else if(sr[realIdx]==='review') kicker.textContent='✗ À REVOIR';
+    else kicker.textContent='QUESTION';
+  }
+  document.getElementById('fc-q').innerHTML=card.q;
+  document.getElementById('fc-a').innerHTML=card.a;
+  document.getElementById('fc-i').textContent=fcIdx+1;
+  const tot=document.getElementById('fc-total');
+  if(tot)tot.textContent=fcOrder.length;
+}
+function updateSRStats(){
+  const sr=lsGet(LS_SR);
+  const known=Object.values(sr).filter(v=>v==='know').length;
+  const review=Object.values(sr).filter(v=>v==='review').length;
+  const unseen=FLASHCARDS.length-Object.keys(sr).length;
+  const k=document.getElementById('sr-known'),r=document.getElementById('sr-review'),u=document.getElementById('sr-unseen');
+  if(k)k.textContent=known;
+  if(r)r.textContent=review;
+  if(u)u.textContent=Math.max(0,unseen);
+}
+function setSRMode(mode,btn){
+  fcMode=mode;
+  document.querySelectorAll('.sr-filter button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  rebuildFCOrder();
+  renderCard();
+  updateSRStats();
 }
 function flipCard(){document.getElementById('fc').classList.toggle('flipped')}
-function nextCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx+1)%FLASHCARDS.length;renderCard()}
-function prevCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx-1+FLASHCARDS.length)%FLASHCARDS.length;renderCard()}
+function rateCard(rating,e){
+  if(e)e.stopPropagation();
+  const realIdx=fcOrder[fcIdx%fcOrder.length];
+  const sr=lsGet(LS_SR);
+  sr[realIdx]=rating;
+  lsSet(LS_SR,sr);
+  updateSRStats();
+  computeReadiness();
+  // Advance
+  fcIdx=(fcIdx+1)%fcOrder.length;
+  if(fcMode!=='all'){rebuildFCOrder();}
+  renderCard();
+}
+function nextCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx+1)%fcOrder.length;renderCard()}
+function prevCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx-1+fcOrder.length)%fcOrder.length;renderCard()}
 function shuffleCards(){fcOrder.sort(()=>Math.random()-.5);fcIdx=0;renderCard()}
 
-// Quiz
+// ============ QUIZ ============
 let answered={};
 function renderQuiz(){
-  answered={};
+  const saved=lsGet(LS_QUIZ);
+  answered={...Object.fromEntries(Object.entries(saved).map(([k,v])=>[+k,v]))};
   document.getElementById('quiz-list').innerHTML = QUIZ.map((q,i)=>`
     <div class="quiz-q" id="q${i}">
       <div class="qmeta">QUESTION ${i+1} / ${QUIZ.length}</div>
       <div class="qtxt">${q.q}</div>
-      ${q.opts.map((o,j)=>`<button class="quiz-opt" onclick="answer(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
-      <div class="quiz-explain" id="exp${i}"><strong>Explication :</strong> ${q.exp}</div>
+      ${q.opts.map((o,j)=>`<button class="quiz-opt${answered[i]!==undefined?(' disabled'+(j===q.correct?' correct':(j===answered[i]?' incorrect':''))):''}" onclick="answer(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      <div class="quiz-explain${answered[i]!==undefined?' show':''}" id="exp${i}"><strong>Explication :</strong> ${q.exp}</div>
     </div>`).join('');
   updateScore();
 }
 function answer(qi,oi){
   if(answered[qi]!==undefined)return;
   answered[qi]=oi;
-  const correct = QUIZ[qi].correct;
+  const correct=QUIZ[qi].correct;
   document.querySelectorAll(`#q${qi} .quiz-opt`).forEach((el,idx)=>{
     el.classList.add('disabled');
     if(idx===correct)el.classList.add('correct');
     else if(idx===oi)el.classList.add('incorrect');
   });
   document.getElementById('exp'+qi).classList.add('show');
+  // Persist
+  const saved=lsGet(LS_QUIZ); saved[qi]=oi; lsSet(LS_QUIZ,saved);
   updateScore();
+  computeReadiness();
 }
 function updateScore(){
-  const total = Object.keys(answered).length;
-  const correct = Object.entries(answered).filter(([k,v])=>QUIZ[k].correct===+v).length;
-  document.getElementById('score-text').textContent = `${correct} / ${total}${total>0?` (${Math.round(correct/total*100)}%)`:''}`;
+  const total=Object.keys(answered).length;
+  const correct=Object.entries(answered).filter(([k,v])=>QUIZ[+k]&&QUIZ[+k].correct===+v).length;
+  const el=document.getElementById('score-text');
+  if(el)el.textContent=`${correct} / ${total}${total>0?` (${Math.round(correct/total*100)}%)`:''}`;
+  if(total===QUIZ.length&&correct===QUIZ.length)confetti();
 }
-function resetQuiz(){renderQuiz();window.scrollTo({top:0,behavior:'smooth'})}
+function resetQuiz(){lsSet(LS_QUIZ,{});renderQuiz();window.scrollTo({top:0,behavior:'smooth'})}
 
-// Search
+// ============ DECISION TREES ============
+let activeTree=null, treeHistory=[];
+function startTree(treeId){
+  activeTree=TREES[treeId];
+  treeHistory=[];
+  renderTreeNode(activeTree.start);
+}
+function renderTreeNode(nodeId){
+  const out=document.getElementById('tree-output'); if(!out)return;
+  const node=activeTree.nodes[nodeId];
+  if(!node){out.innerHTML='<p>Nœud introuvable.</p>';return;}
+  if(node.type==='q'){
+    out.innerHTML=`
+      <div class="tree-wrap">
+        <button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button>
+        <div class="dt-question">
+          ${node.path?`<div class="dt-path">${node.path}</div>`:''}
+          <h4>${node.text}</h4>
+          <div class="dt-choices">
+            ${node.choices.map((c,i)=>`<button class="dt-btn" onclick="treeChoose('${c.next}','${nodeId}')">${c.label.replace(/\n/g,'<br>')}</button>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  } else {
+    out.innerHTML=`
+      <div class="tree-wrap">
+        <button class="dt-reset" onclick="resetTree()">↩ RECOMMENCER</button>
+        <div class="dt-result">
+          <div class="res-label">✓ Ton test / ta méthode</div>
+          <div class="res-test">${node.test}</div>
+          <div class="res-format">${node.format}</div>
+          <div class="res-when">${node.when}</div>
+          ${node.pkg?`<div style="margin-top:14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted)">Dans SPSS / cours : <span style="color:var(--burgundy)">${node.pkg}</span></div>`:''}
+        </div>
+      </div>`;
+  }
+}
+function treeChoose(nextId,fromId){
+  treeHistory.push(fromId);
+  renderTreeNode(nextId);
+}
+function resetTree(){
+  treeHistory=[];
+  document.getElementById('tree-output').innerHTML='';
+}
+
+// ============ QUICK DRILL ============
+let drillQ=[], drillIdx=0, drillAnswered={}, drillCount=5;
+function initDrill(){ drillQ=[];drillIdx=0;drillAnswered={} }
+function startDrill(n){
+  drillCount=n||5;
+  const pool=[...QUIZ.keys()].sort(()=>Math.random()-.5).slice(0,drillCount);
+  drillQ=pool;
+  drillIdx=0;
+  drillAnswered={};
+  renderDrillQ();
+}
+function renderDrillQ(){
+  const root=document.getElementById('drill-root'); if(!root)return;
+  if(drillIdx>=drillQ.length){renderDrillEnd();return;}
+  const qi=drillQ[drillIdx];
+  const q=QUIZ[qi];
+  const pct=Math.round(drillIdx/drillQ.length*100);
+  root.innerHTML=`
+    <div class="drill-hero">
+      <div class="kicker">QUESTION ${drillIdx+1} / ${drillQ.length}</div>
+      <h3>Quick Drill</h3>
+    </div>
+    <div class="drill-progress"><div class="drill-bar" style="width:${pct}%"></div></div>
+    <div class="drill-q-wrap">
+      <div class="drill-q-num">Question ${drillIdx+1}</div>
+      <div class="drill-q-txt">${q.q}</div>
+      ${q.opts.map((o,j)=>`<button class="quiz-opt" id="dopt${j}" onclick="drillAnswer(${qi},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      <div class="quiz-explain" id="drill-exp"><strong>Explication :</strong> ${q.exp}</div>
+    </div>
+    <div id="drill-next" style="display:none;text-align:center;margin-top:16px">
+      <button class="btn" onclick="drillNext()">SUIVANT →</button>
+    </div>`;
+}
+function drillAnswer(qi,oi){
+  if(drillAnswered[drillIdx]!==undefined)return;
+  drillAnswered[drillIdx]=oi;
+  const q=QUIZ[qi];
+  document.querySelectorAll('.drill-q-wrap .quiz-opt').forEach((el,idx)=>{
+    el.classList.add('disabled');
+    if(idx===q.correct)el.classList.add('correct');
+    else if(idx===oi)el.classList.add('incorrect');
+  });
+  document.getElementById('drill-exp').classList.add('show');
+  document.getElementById('drill-next').style.display='block';
+}
+function drillNext(){drillIdx++;renderDrillQ()}
+function renderDrillEnd(){
+  const root=document.getElementById('drill-root');if(!root)return;
+  const correct=Object.values(drillAnswered).filter((v,i)=>QUIZ[drillQ[i]]&&QUIZ[drillQ[i]].correct===v).length;
+  const pct=Math.round(correct/drillQ.length*100);
+  const msg=pct===100?'Parfait ! 🏆':pct>=80?'Excellent !':pct>=60?'Bien, continue !':'Révise encore !';
+  root.innerHTML=`
+    <div class="drill-end">
+      <span class="drill-score-big">${correct}/${drillQ.length}</span>
+      <div class="drill-score-label">${pct}% de réussite</div>
+      <div class="drill-msg">${msg}</div>
+      <button class="btn" onclick="startDrill(${drillQ.length})" style="margin-right:10px">RECOMMENCER</button>
+      <button class="btn ghost" onclick="startDrill(5)">NOUVEAU DRILL</button>
+    </div>`;
+  if(pct===100)confetti();
+}
+
+// ============ SEARCH ============
 document.getElementById('search').addEventListener('input',e=>{
-  const q = e.target.value.toLowerCase().trim();
+  const q=e.target.value.toLowerCase().trim();
   if(!q){go('home');return}
-  let html = `<h2 class="session-title">Résultats : "${e.target.value}"</h2><div class="session-meta">RECHERCHE FULL-TEXT</div>`;
-  const matches = [];
+  let html=`<h2 class="session-title">Résultats : "${e.target.value}"</h2><div class="session-meta">RECHERCHE FULL-TEXT</div>`;
+  const matches=[];
   Object.entries(VIEWS).forEach(([id,htmlContent])=>{
-    if(['home','glossary','flashcards','quiz'].includes(id))return;
-    const text = htmlContent.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
-    const idx = text.toLowerCase().indexOf(q);
+    if(['home','glossary','flashcards','quiz','trees','drill'].includes(id))return;
+    const text=htmlContent.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+    const idx=text.toLowerCase().indexOf(q);
     if(idx>=0){
-      const start = Math.max(0,idx-80), end = Math.min(text.length,idx+200);
-      const snippet = text.slice(start,end).replace(new RegExp(q,'gi'),m=>`<span class="search-hit">${m}</span>`);
-      const session = SESSIONS.find(s=>s.id===id);
+      const start=Math.max(0,idx-80),end=Math.min(text.length,idx+200);
+      const snippet=text.slice(start,end).replace(new RegExp(q,'gi'),m=>`<span class="search-hit">${m}</span>`);
+      const session=SESSIONS.find(s=>s.id===id);
       matches.push(`<div class="search-hit-card"><div class="ctx">${session.label}</div><div class="snip">…${snippet}…</div><button class="btn sm" onclick="document.getElementById('search').value='';go('${id}')">OUVRIR →</button></div>`);
     }
   });
@@ -1460,13 +1857,14 @@ document.getElementById('search').addEventListener('input',e=>{
       matches.push(`<div class="search-hit-card"><div class="ctx">GLOSSAIRE · ${g.term}</div><div class="snip">${g.def.replace(new RegExp(q,'gi'),m=>`<span class="search-hit">${m}</span>`)}</div></div>`);
     }
   });
-  html += matches.length ? matches.join('') : '<p class="lede">Aucun résultat trouvé.</p>';
-  document.getElementById('main').innerHTML = `<div class="view active">${html}</div>`;
+  html+=matches.length?matches.join(''):'<p class="lede">Aucun résultat trouvé.</p>';
+  document.getElementById('main').innerHTML=`<div class="view active">${html}</div>`;
 });
 
-// Init
+// ============ INIT ============
 buildNav();
 go('home');
+computeReadiness();
 </script>
 </body>
 </html>
