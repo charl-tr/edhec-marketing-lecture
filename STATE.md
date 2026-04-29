@@ -3,55 +3,50 @@
 Dernière mise à jour : 2026-04-29
 
 ## Phase actuelle
-**Phase 1 — Extraction structurée** (à démarrer)
+**Phase 2 — Intégration UI** (en cours)
 
 ## Avancement par session
 
-| Session | Pages | Lecture | Screens extraits | Markdown structuré | Validé utilisateur |
-|---------|-------|---------|------------------|---------------------|---------------------|
-| S1      | 83    | ✅ Complet         | ✅ 9          | ✅ `content/s1.md`  | ⏳ En attente       |
-| S2      | 64    | ✅ Complet         | ✅ 12         | ✅ `content/s2.md`  | ⏳ En attente       |
-| S3      | 9     | ✅ Complet         | ✅ 3          | ✅ `content/s3.md`  | ⏳ En attente       |
-| S4      | 43    | ⏳ Partiel (1–20) | ⬜ 0          | ⬜ Non              | ⬜                  |
-| S6      | 76    | ⏳ Partiel (1–76) | ⬜ 0          | ⬜ Non              | ⬜                  |
+| Session | Pages | Lecture | Screens extraits | Markdown structuré | Intégré index.html | Validé utilisateur |
+|---------|-------|---------|------------------|---------------------|---------------------|---------------------|
+| S1      | 83    | ✅ Complet         | ✅ 9          | ✅ `content/s1.md`  | ✅ VIEWS.s1 complet | ⏳ En attente       |
+| S2      | 64    | ✅ Complet         | ✅ 12         | ✅ `content/s2.md`  | ✅ VIEWS.s2 complet | ⏳ En attente       |
+| S3      | 9     | ✅ Complet         | ✅ 3          | ✅ `content/s3.md`  | ✅ VIEWS.s3 complet | ⏳ En attente       |
+| S4      | 43    | ✅ Complet (1–43)  | ⬜ 0          | ✅ `content/s4.md`  | ✅ VIEWS.s4 complet | ⏳ En attente       |
+| S6      | 76    | ✅ Complet (1–76)  | ⬜ 0          | ✅ `content/s6.md`  | ✅ VIEWS.s6 complet | ⏳ En attente       |
 
 ## Pages restant à lire
-- S1 : pages 61–83 (23 pages = 2 chunks)
-- S2 : pages 41–64 (24 pages = 2 chunks)
-- S4 : pages 21–43 (23 pages = 2 chunks)
-- S6 : déjà couvert si chunks 1–76 lus en S2/3 ; à reconfirmer
+- Aucune — toutes les sessions sont lues exhaustivement ✅
 
-## Screens à extraire (priorité)
+## Features implémentées
 
-### S1
-- Slide 29 : schéma "Typical process" (preparing → conducting → transcription → coding → theory)
-- Slide 31 : tableau Sarstedt & Mooi 4.2 (focus groups vs in-depth interviews)
-- Slide 34 : 3 colonnes (unstructured / semi-structured / structured)
-- Slide 36 : structure typique du guide d'interview
-- Slide 40 : tableau common sampling approaches
-- Slide 42 : courbe data saturation
-- Slide 47 : critères du bon interviewer (Kvale)
+| Feature | Statut |
+|---------|--------|
+| EDHEC branding (Montserrat, burgundy, border-radius 0) | ✅ |
+| Navigation par sessions + glossaire + flashcards + quiz | ✅ |
+| Fiches S1, S2, S3, S4, S6 | ✅ |
+| Arbres de décision (test stat + méthode) | ✅ |
+| Flashcards avec spaced repetition (SR) | ✅ |
+| Quiz auto-corrigé avec localStorage | ✅ |
+| Quick Drill (5 ou 10 questions aléatoires) | ✅ |
+| Exam Readiness % dans le header | ✅ |
+| Confetti sur score parfait | ✅ |
+| Recherche full-text | ✅ |
+| GitHub Pages déployé | ✅ https://charl-tr.github.io/edhec-marketing-lecture/ |
 
-### S2
-- Slide WWF "1 participant/visual" → "30 participants/visual" (illustration sample size)
-- Slide tableau "Which Statistical Test?" (matching IV/DV → test)
-- Slide "Sampling Strategies" (probability vs non-probability)
-- Slide A/B Test Obama Control vs Sequential
-- Slide "Three pillars of a good experiment"
+## Contenu — stats
 
-### S4
-- Slide WWF setup Qualtrics (à confirmer après lecture pages 21–43)
-
-### S6
-- Slide SPSS Data View (capture de l'interface)
-- Slide SPSS Variable View
-- Slide ANOVA output (tableau Sum of Squares / df / F / Sig.)
-- Slide post-hoc Tukey output (Multiple Comparisons)
-- Slide Descriptives table
-- Slide régression Coefficients output
+| Indicateur | Valeur |
+|---|---|
+| Flashcards | ~42 cartes |
+| Quiz QCM | ~38 questions |
+| Arbres de décision | 2 (test stat + méthode) |
+| Sessions complètes | 5/5 |
 
 ## Blocages / questions ouvertes
 - Aucun pour l'instant.
 
 ## Prochaine action
-Démarrer la lecture exhaustive de **S3 (9 pages, le plus court)** comme rodage du workflow, puis enchaîner S1 → S2 → S4 → S6.
+- Valider le contenu S4 et S6 avec l'utilisateur
+- Éventuellement extraire des screenshots PDF (S4/S6) si des visuels manquent
+- Push final GitHub

@@ -1248,32 +1248,299 @@ VIEWS.s3 = `
 
 // ============ S4 / S6 placeholders ============
 VIEWS.s4 = `
-<h2 class="session-title">S4 · Implémentation Quantitative · Qualtrics</h2>
-<div class="session-meta">43 SLIDES · WIP · <strong>FICHE EN COURS DE RÉDACTION</strong></div>
+<h2 class="session-title">S4 · Implementing Quantitative Methods · Qualtrics</h2>
+<div class="session-meta">43 SLIDES · COMPLET</div>
+
+<div class="callout intuition">
+<div class="callout-label">🎯 Hook</div>
+<p>Tu as conçu un design expérimental sur papier. Maintenant il faut le <strong>faire vivre</strong> : programmer les 4 conditions dans Qualtrics, randomiser les stimuli, gérer la logique d'affichage, exporter proprement pour SPSS. Chaque réglage a une raison méthodologique.</p>
+</div>
+
+<h3 class="section-title">1. Rappel du design WWF</h3>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p><strong>Between-subjects</strong> = chaque participant voit UNE seule campagne (Panda / Deer / Rain Forest / Rhino). Pas de contamination entre conditions. Mais il faut plus de participants : 4 × 30 = 120 minimum.</p>
+</div>
+<table>
+<tr><th>Variable</th><th>Rôle</th><th>Type</th></tr>
+<tr><td>Condition (campagne)</td><td>IV</td><td>Nominale (4 groupes)</td></tr>
+<tr><td>Genre</td><td>IV / Covariate</td><td>Nominale</td></tr>
+<tr><td>Âge</td><td>IV / Covariate</td><td>Métrique</td></tr>
+<tr><td>Culpabilité</td><td>DV</td><td>Métrique (scale)</td></tr>
+<tr><td>Responsabilité</td><td>DV</td><td>Métrique (scale)</td></tr>
+<tr><td>Don (€)</td><td>DV comportemental</td><td>Métrique</td></tr>
+</table>
+
+<h3 class="section-title">2. Types de questions Qualtrics</h3>
+<table>
+<tr><th>Type</th><th>Usage</th><th>Avantage/Limite</th></tr>
+<tr><td><strong>Multiple Choice</strong></td><td>Genre, condition, donation keep/give</td><td>Simple, clair</td></tr>
+<tr><td><strong>Matrix Table</strong></td><td>Items Likert groupés (culpabilité, responsabilité)</td><td>Fluidifie · Overuse = abandon sur mobile</td></tr>
+<tr><td><strong>Slider</strong></td><td>Montant (0–10€ donation)</td><td>Ancre le participant (min/max visible). Mobile-friendly si activé.</td></tr>
+<tr><td><strong>Text Entry + validation</strong></td><td>Âge (numérique précis)</td><td>Add validation → Content type = Number. Sans validation : risque de saisies invalides.</td></tr>
+</table>
 <div class="callout warning">
-<div class="callout-label">⚠️ Work in progress</div>
-<p>L'extraction structurée de S4 est en cours. Contenu prévisionnel :</p>
-<ul>
-<li>Cas pédagogique <strong>WWF</strong> (4 campagnes : Panda, Deer, Rainforest, Rhino)</li>
-<li>Setup Qualtrics : intro/consent → screening → randomisation between-subjects → DV → démos → debrief</li>
-<li>Types de questions Qualtrics : Multiple choice, Text/Graphic, Matrix table, Slider, Form field</li>
-<li>Quality checks toujours APRÈS la VD</li>
-</ul>
+<div class="callout-label">⚠️ Piège Matrix Table</div>
+<p>Améliore le flux — mais l'overuse décourage les participants, surtout sur smartphone. Utiliser uniquement pour des items formulés de façon similaire.</p>
+</div>
+
+<h3 class="section-title">3. Structure complète du survey WWF</h3>
+<div class="card accent">
+<table>
+<tr><th>Block</th><th>Contenu</th><th>Logique</th></tr>
+<tr><td><strong>1. Informed Consent</strong></td><td>Texte RGPD + MCQ Agree/Disagree</td><td>Skip Logic → End Survey si "No"</td></tr>
+<tr><td><strong>2. Between-picture</strong></td><td>4 pages, une image WWF par condition</td><td>Question Randomization → Present only 1 of 4</td></tr>
+<tr><td><strong>3. Guilt &amp; Responsibility</strong></td><td>Matrix 5-points Likert, 4+4 items</td><td>—</td></tr>
+<tr><td><strong>4. Behavioral DV</strong></td><td>Q10 keep/donate + Q11 Slider 0-10€</td><td>Display Logic → Q11 si Q10 = "donate"</td></tr>
+<tr><td><strong>5. Demographics</strong></td><td>Âge, Genre, "Are you a donor?"</td><td>—</td></tr>
+<tr><td><strong>6. Debriefing</strong></td><td>Révélation vrai objectif, remerciements</td><td>—</td></tr>
+</table>
+</div>
+
+<h3 class="section-title">4. Fonctionnalités avancées Qualtrics</h3>
+
+<div class="card">
+<strong>Question Randomization (between-subjects)</strong><br>
+Où : cliquer sur le <strong>block</strong> (pas la question) → Block behavior → Question randomization<br>
+Réglage : <em>"Present only <strong>1</strong> of total questions"</em><br>
+Résultat : Qualtrics choisit aléatoirement 1 condition sur 4 pour chaque participant.
+<div class="callout warning" style="margin-top:12px">
+<div class="callout-label">⚠️ Attention</div>
+<p>La randomisation désactive le page break, skip logic et l'ordre des questions à l'intérieur du block.</p>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px">
+<strong>Display Logic</strong><br>
+Sur la question à conditionner → Question behavior → Display logic<br>
+Règle : <em>"Display this question only if [Q précédente] [réponse] Is Selected"</em><br>
+Exemple : Q11 (slider) s'affiche <strong>seulement si</strong> Q10 = "I decide to donate a portion" est sélectionnée.
+</div>
+
+<div class="card" style="margin-top:12px">
+<strong>Skip Logic</strong><br>
+Sur la question de consentement → Skip to <strong>End of Survey</strong> if "No I do not agree" Is Selected.<br>
+<em>Différence clé</em> : Skip Logic saute à une autre section/fin. Display Logic montre/cache une question sur la même page.
+</div>
+
+<div class="card" style="margin-top:12px">
+<strong>Collaborate (obligatoire pour projet groupe)</strong><br>
+Tools → Collaborate → ajouter les emails des coéquipiers. Sans ça, personne d'autre ne peut éditer le survey.
+</div>
+
+<h3 class="section-title">5. Publication et export des données</h3>
+<div class="callout intuition">
+<div class="callout-label">💡 Règle d'or</div>
+<p>Toujours <strong>Preview</strong> avant Publish. Qualtrics fait une ExpertReview automatique (suggestions qualité). Après publication → Copy link → partager aux participants.</p>
+</div>
+<div class="card accent">
+<strong>Réglages export critiques</strong> (Data &amp; Analysis → Export &amp; Import → Export Data)<br><br>
+<table>
+<tr><th>Option</th><th>Réglage</th><th>Pourquoi</th></tr>
+<tr><td>Format</td><td>CSV ou SPSS</td><td>—</td></tr>
+<tr><td>Responses</td><td><strong>Use numeric values</strong></td><td>SPSS a besoin de chiffres, pas de texte</td></tr>
+<tr><td>Unanswered questions</td><td>Recode as <strong>-99</strong></td><td>Distingue "vu mais non répondu" de "jamais affiché"</td></tr>
+<tr><td>Viewing order</td><td>✅ Export viewing order data</td><td>Pour surveys randomisés, tracer quelle condition a vu qui</td></tr>
+</table>
+</div>
+
+<h3 class="section-title">6. Rapport final Matrix — 8 sections</h3>
+<div class="card">
+<ol>
+<li>Introduction (problème managérial, question de recherche)</li>
+<li>Description du design de recherche et collecte de données</li>
+<li>Description des analyses</li>
+<li>Interprétation des résultats</li>
+<li>Conclusions et recommandations</li>
+<li>Limitations</li>
+<li>Références (APA partout)</li>
+<li>Déclarations de contribution individuelle</li>
+</ol>
+Format : Word · Écrit comme un article de recherche · APA en texte et en liste de références.
+</div>
+<div class="callout warning">
+<div class="callout-label">⚠️ Piège calendrier</div>
+<p>Ne JAMAIS collecter des données sans validation coach S5 — "GET VALIDATION BEFORE DATA COLLECTION". Recommencer après collecte non validée = catastrophique.</p>
+</div>
+
+<h3 class="section-title">✅ Test toi sur S4</h3>
+<div class="card">
+<p><strong>Q1</strong> — Comment s'assure-t-on que chaque participant voit UNE SEULE condition Qualtrics ?</p>
+<details><summary>Voir réponse</summary>Block → Block behavior → Question Randomization → <strong>Present only 1 of total questions</strong>.</details>
+<p style="margin-top:10px"><strong>Q2</strong> — Quelle est la différence entre Display Logic et Skip Logic ?</p>
+<details><summary>Voir réponse</summary><strong>Skip Logic</strong> saute à une autre section/End Survey. <strong>Display Logic</strong> montre ou cache une question conditionnellement sur la même page.</details>
+<p style="margin-top:10px"><strong>Q3</strong> — Pourquoi exporter en "Use numeric values" (pas "choice text") ?</p>
+<details><summary>Voir réponse</summary>SPSS a besoin de <strong>chiffres</strong> pour les analyses. "Male" = inutilisable. "1" = exploitable directement.</details>
 </div>
 `;
 
 VIEWS.s6 = `
-<h2 class="session-title">S6 · Analyse des Données</h2>
-<div class="session-meta">76 SLIDES · WIP · <strong>FICHE EN COURS DE RÉDACTION</strong></div>
+<h2 class="session-title">S6 · Analysing Qualitative &amp; Quantitative Data</h2>
+<div class="session-meta">76 SLIDES · COMPLET · SESSION LA PLUS DENSE DE L'EXAMEN</div>
+
+<div class="callout intuition">
+<div class="callout-label">🎯 Hook</div>
+<p>Tu as collecté tes données. Maintenant quoi ? Cette session transforme un fichier SPSS brut en résultats interprétables — qu'ils viennent d'interviews qualitatives ou d'un questionnaire expérimental. C'est la session la plus testée à l'examen.</p>
+</div>
+
+<h3 class="section-title">PARTIE 1 — Analyse qualitative</h3>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Thematic vs Content Analysis</h4>
+<table>
+<tr><th>Approche</th><th>Description</th><th>Quand</th></tr>
+<tr><td><strong>Thematic Analysis</strong> (Braun &amp; Clarke, 2006)</td><td>Identifier des patterns récurrents → thèmes</td><td>Exploration ouverte, inductif</td></tr>
+<tr><td><strong>Content Analysis</strong> (Krippendorff, 2018)</td><td>Compter et catégoriser des éléments prédéfinis</td><td>Comparaisons quantifiées, déductif</td></tr>
+</table>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Processus de codage</h4>
+<div class="card accent">
+Transcription brute → <strong>Codes</strong> (étiquettes sur extraits) → <strong>Catégories</strong> (codes regroupés) → <strong>Thèmes</strong> → <strong>Insights / Théorie</strong>
+</div>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>Coder un texte = surligner un livre avec un marqueur différent par idée. Puis regrouper les surlignages similaires en thèmes. <strong>Déductif</strong> = partir de codes prédéfinis. <strong>Inductif</strong> = laisser émerger les codes du texte.</p>
+</div>
+<div class="card">
+<strong>Taguette</strong> — outil gratuit collaboratif de codage quali. Workflow : Import → Tag → Review → Export. À installer avant S6 (via Blackboard).<br>
+<strong>Inter-coder reliability</strong> : deux chercheurs codent indépendamment → accord élevé = analyse plus crédible.
+</div>
+
+<h3 class="section-title">PARTIE 2 — Préparation des données quantitatives</h3>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Compound scores (scales multi-items)</h4>
+<div class="card">
+Exemple : "Guiltfeelings" = moyenne de 4 items Likert.<br>
+<strong>SPSS</strong> : Transform → Compute Variable → <code>MEAN(item1, item2, item3, item4)</code>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Cronbach's Alpha — fiabilité interne</h4>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>α teste si tes items "rament dans le même sens". Si tu mesures la culpabilité avec 4 questions similaires, elles doivent être corrélées. α &lt; 0.7 = les items ne mesurent pas la même chose → ne pas créer le compound score.</p>
+</div>
+<table>
+<tr><th>Valeur α</th><th>Interprétation</th></tr>
+<tr><td>α ≥ 0.9</td><td>Excellent</td></tr>
+<tr><td>α ≥ 0.8</td><td>Bon</td></tr>
+<tr><td><strong>α ≥ 0.7</strong></td><td><strong>Acceptable ✅ (seuil standard)</strong></td></tr>
+<tr><td>α ≥ 0.6</td><td>Questionnable</td></tr>
+<tr><td>α &lt; 0.6</td><td>Médiocre → revoir les items</td></tr>
+</table>
+<p style="margin-top:8px;font-size:13px;color:var(--muted)">SPSS : Analyze → Scale → Reliability Analysis → Alpha</p>
+
+<h3 class="section-title">PARTIE 3 — Analyse SPSS</h3>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Choisir le bon test statistique ★ EXAMEN ★</h4>
+<div class="card accent">
+<table>
+<tr><th>IV</th><th>DV</th><th>Test</th><th>SPSS</th></tr>
+<tr><td>Nominale (2 groupes)</td><td>Métrique</td><td><strong>Independent t-test</strong></td><td>Compare Means → Ind.-Samples T Test</td></tr>
+<tr><td>Nominale (3+ groupes)</td><td>Métrique</td><td><strong>One-Way ANOVA</strong> + Tukey</td><td>Compare Means → One-Way ANOVA</td></tr>
+<tr><td>Métrique</td><td>Métrique</td><td><strong>Linear Regression</strong></td><td>Regression → Linear</td></tr>
+<tr><td>Nominale</td><td>Nominale</td><td><strong>Chi-square</strong></td><td>Descriptive → Crosstabs → Chi-square</td></tr>
+</table>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">p-valeur et H0/H1</h4>
+<div class="card">
+<strong>H0</strong> (null) : pas de différence / pas d'effet · <strong>H1</strong> : il y a un effet<br><br>
+<table>
+<tr><th>p-valeur</th><th>Décision</th></tr>
+<tr><td><strong>p &lt; 0.05</strong></td><td>Rejeter H0 → effet <strong>significatif</strong> ✅</td></tr>
+<tr><td>p ≥ 0.05</td><td>Conserver H0 → <strong>non significatif</strong></td></tr>
+</table>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">One-Way ANOVA — étapes SPSS</h4>
+<div class="card accent">
+<strong>Step 1</strong> : Analyze → Compare Means → One-Way ANOVA<br>
+<strong>Step 2</strong> : Dependent List = Guiltfeelings, Responsibility, Generosity · Factor = Visuals (condition)<br>
+<strong>Step 3</strong> : Options → ✅ Descriptive + ✅ Homogeneity of variance (Levene)<br>
+<strong>Step 4</strong> : Post Hoc → ✅ Tukey<br>
+<strong>Step 5</strong> : OK
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Levene's Test (vérifier avant ANOVA)</h4>
+<table>
+<tr><th>Levene Sig.</th><th>Décision</th></tr>
+<tr><td>p &gt; 0.05</td><td>Variances égales → ANOVA standard ✅</td></tr>
+<tr><td>p &lt; 0.05</td><td>Variances inégales → utiliser <strong>Welch's ANOVA</strong></td></tr>
+</table>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Lire l'output ANOVA (tableau "Sig.")</h4>
+<div class="card">
+Colonnes clés : <strong>F</strong> (statistique) · <strong>df</strong> (degrés liberté) · <strong>Sig.</strong> (p-valeur = ta valeur clé)<br><br>
+<strong>Résultats WWF (illustratifs)</strong> :
+<table>
+<tr><th>DV</th><th>F</th><th>df</th><th>p</th><th>Conclusion</th></tr>
+<tr><td>Guiltfeelings</td><td>4.103</td><td>(3, 116)</td><td>.008</td><td>✅ Significatif</td></tr>
+<tr><td>Responsibility</td><td>1.875</td><td>(3, 116)</td><td>.138</td><td>❌ Non significatif</td></tr>
+<tr><td>Generosity</td><td>12.235</td><td>(3, 116)</td><td>&lt;.001</td><td>✅ Très significatif</td></tr>
+</table>
+</div>
 <div class="callout warning">
-<div class="callout-label">⚠️ Work in progress</div>
-<p>La session la plus dense. Contenu prévisionnel :</p>
-<ul>
-<li><strong>Partie 1 — Quali</strong> : Thematic analysis (6 phases Braun & Clarke 2006), Content analysis, codage déductif/inductif, Taguette</li>
-<li><strong>Partie 2 — Préparation données</strong> : compound scores SPSS, Cronbach α</li>
-<li><strong>Partie 3 — SPSS</strong> : choix du test (t-test/ANOVA/régression/chi-square), Levene, ANOVA WWF, post-hoc Tukey HSD, lecture outputs, interpretation des résultats WWF (Rainforest et Rhino &gt;&gt; Panda et Deer pour les dons)</li>
-<li><strong>Reporting</strong> : F(df1,df2)=X.XX, p=.XX format APA</li>
-</ul>
+<div class="callout-label">⚠️ Piège majeur</div>
+<p>L'ANOVA dit "au moins un groupe diffère" mais PAS lequel. Pour savoir QUELS groupes → Post-hoc Tukey.</p>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Post-hoc Tukey HSD</h4>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>Tukey HSD (Honestly Significant Difference, 1949) : compare toutes les paires de groupes. Si Sig. &lt; 0.05 → ces deux groupes sont significativement différents (marqués * dans l'output).</p>
+</div>
+<div class="card">
+<strong>Multiple Comparisons output — Generosity (WWF)</strong>
+<table>
+<tr><th>Comparaison</th><th>Mean Diff</th><th>Sig.</th><th>Résultat</th></tr>
+<tr><td>Panda vs Rain Forest</td><td>-2.800</td><td>&lt;.001</td><td>✅ Significatif*</td></tr>
+<tr><td>Panda vs Rhino</td><td>-2.000</td><td>.003</td><td>✅ Significatif*</td></tr>
+<tr><td>Deer vs Rain Forest</td><td>-2.733</td><td>&lt;.001</td><td>✅ Significatif*</td></tr>
+<tr><td>Rain Forest vs Rhino</td><td>0.800</td><td>.497</td><td>Non significatif</td></tr>
+</table>
+</div>
+<div class="card accent" style="margin-top:12px">
+<strong>Descriptives — Generosity</strong>
+<table>
+<tr><th>Campagne</th><th>N</th><th>M</th><th>SD</th></tr>
+<tr><td>Panda</td><td>30</td><td>1.93</td><td>1.31</td></tr>
+<tr><td>Deer</td><td>30</td><td>2.00</td><td>1.44</td></tr>
+<tr><td>Rain Forest</td><td>30</td><td><strong>4.73</strong></td><td>2.82</td></tr>
+<tr><td>Rhino</td><td>30</td><td>3.93</td><td>2.77</td></tr>
+</table>
+→ <strong>Rain Forest et Rhino génèrent significativement plus de générosité que Panda et Deer.</strong>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Régression linéaire (METRIC IV → METRIC DV)</h4>
+<div class="card">
+<strong>Exemple</strong> : Âge (IV métrique) → Don (DV métrique)<br>
+SPSS : Analyze → Regression → Linear → Dependent: Donation · Independent: Age<br><br>
+<strong>Lire l'output :</strong><br>
+• <strong>R²</strong> = % de variance de la DV expliqué par l'IV (en sciences sociales : 0.02–0.15 = normal)<br>
+• Coefficients table : <strong>B</strong> (changement DV pour +1 unité IV) · <strong>Sig.</strong> (est-ce significatif ?)<br><br>
+<strong>Résultat WWF</strong> : B = 0.013, p = .695 → <strong>l'âge ne prédit pas significativement les dons</strong>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--burgundy);margin:16px 0 8px">Rédiger les résultats — templates APA ★ EXAMEN ★</h4>
+<div class="card accent">
+<strong>ANOVA :</strong><br>
+<em>"A one-way ANOVA revealed a significant effect of campaign type on guilt feelings, F(3, 116) = 4.103, p = .008."</em><br><br>
+<strong>Post-hoc :</strong><br>
+<em>"Tukey post-hoc tests showed that Campaigns 3 and 4 (M = 4.73; M = 3.93) produced significantly higher generosity than Campaigns 1 and 2 (M = 2.0; M = 1.93), p &lt; .01."</em><br><br>
+<strong>Régression :</strong><br>
+<em>"A linear regression showed that age was not a significant predictor of donation amount (β = 0.013, t(118) = 0.393, p = .695)."</em><br><br>
+<strong>Golden rules</strong> : toujours mentionner le test · inclure F/t/β + p-value · reporter M et SD pour effets significatifs · utiliser tableaux.
+</div>
+
+<h3 class="section-title">✅ Test toi sur S6</h3>
+<div class="card">
+<p><strong>Q1</strong> — IV nominale 4 groupes, DV métrique. Quel test ?</p>
+<details><summary>Voir réponse</summary><strong>One-way ANOVA</strong> + post-hoc <strong>Tukey HSD</strong> pour identifier quels groupes diffèrent.</details>
+<p style="margin-top:10px"><strong>Q2</strong> — Levene donne p = .02. Que faire ?</p>
+<details><summary>Voir réponse</summary>p &lt; 0.05 → variances inégales → utiliser <strong>Welch's ANOVA</strong> au lieu de l'ANOVA standard.</details>
+<p style="margin-top:10px"><strong>Q3</strong> — B = 0.013, p = .695. Comment interpréter ?</p>
+<details><summary>Voir réponse</summary>p &gt; 0.05 → non significatif. L'âge <strong>ne prédit pas</strong> les dons. B = 0.013 = +0.013€ par an d'âge mais cet effet est dû au hasard.</details>
+<p style="margin-top:10px"><strong>Q4</strong> — Quelle phrase pour un résultat ANOVA non significatif ?</p>
+<details><summary>Voir réponse</summary><em>"A one-way ANOVA revealed no significant effect of [IV] on [DV], F(3, 116) = 1.875, p = .138."</em></details>
 </div>
 `;
 
@@ -1360,7 +1627,20 @@ const FLASHCARDS = [
   {q:"Quelles sont les 8 sections du rapport Matrix ?",a:"1. Introduction<br>2. Research design & data collection<br>3. Data analyses<br>4. Interpretation<br>5. Conclusions & recommendations<br>6. Limitations<br>7. References<br>8. Individual contribution statements"},
   {q:"Sample size focus group ?",a:"<strong>6 à 10 personnes</strong>. Moins → pas assez de diversité. Plus → trop de compétition pour le temps de parole. Durée typique : 60-120 min."},
   {q:"Pourquoi ne peut-on PAS remplacer les participants par de la synthetic data (à date 2026) ?",a:"Parce que les LLMs <strong>hallucinent</strong> (OpenAI, sept 2025) et <strong>ne simulent pas la psychologie humaine</strong> (Schröder, Morgenroth, Kuhl, Vaquet, Paaßen, 2025)."},
-  {q:"Format de reporting d'une ANOVA ?",a:"<strong>F(df1, df2) = X.XX, p = .XX</strong><br>Ex : <em>'A one-way ANOVA revealed a significant effect of campaign on guilt feelings, F(3, 116) = 4.10, p = .008.'</em>"}
+  {q:"Format de reporting d'une ANOVA ?",a:"<strong>F(df1, df2) = X.XX, p = .XX</strong><br>Ex : <em>'A one-way ANOVA revealed a significant effect of campaign on guilt feelings, F(3, 116) = 4.10, p = .008.'</em>"},
+  // S4 – Qualtrics
+  {q:"Comment mettre en place le between-subjects dans Qualtrics ?",a:"Mettre les 4 stimuli dans le <strong>même block</strong>. Sur le block (pas la question) → Block behavior → Question Randomization → <strong>Present only 1 of total questions</strong>."},
+  {q:"Différence entre Display Logic et Skip Logic dans Qualtrics ?",a:"<strong>Skip Logic</strong> : saute à une autre section ou End Survey (ex : consentement → End if 'No').<br><strong>Display Logic</strong> : affiche / masque une question conditionnellement (ex : Q11 slider si Q10 = 'donate')."},
+  {q:"Quels sont les 4 types de questions Qualtrics vus en cours ?",a:"1. <strong>Multiple Choice</strong> (genre, condition)<br>2. <strong>Matrix Table</strong> (Likert multi-items)<br>3. <strong>Slider</strong> (numérique avec plage 0–10)<br>4. <strong>Text Entry + validation Number</strong> (âge précis)"},
+  {q:"Pourquoi exporter en 'Use numeric values' et que signifie -99 ?",a:"SPSS a besoin de <strong>chiffres</strong>, pas de texte. <strong>-99</strong> = question vue par le participant mais non répondue (distinct de 'jamais affichée' = missing data)."},
+  {q:"Que faire avant de cliquer Publish dans Qualtrics ?",a:"Toujours <strong>Preview</strong> d'abord. Qualtrics lance une <strong>ExpertReview</strong> automatique (suggestions qualité). Ensuite Publish → Copy link."},
+  // S6 – Analyse
+  {q:"Comment créer un compound score dans SPSS ?",a:"Transform → <strong>Compute Variable</strong> → Variable Name = nom du construct → <strong>MEAN(item1, item2, item3, item4)</strong>.<br>Toujours vérifier Cronbach α ≥ 0.7 AVANT."},
+  {q:"Quelle est la différence entre thematic analysis et content analysis ?",a:"<strong>Thematic Analysis</strong> (Braun & Clarke 2006) : thèmes émergents, inductif/déductif, qualitatif.<br><strong>Content Analysis</strong> (Krippendorff 2018) : compter et catégoriser de façon systématique, plus quantifiable."},
+  {q:"IV nominale 2 groupes → DV métrique : quel test ?",a:"<strong>Independent-Samples T-test</strong>. (ANOVA est équivalent pour 2 groupes.) SPSS : Analyze → Compare Means → Independent-Samples T Test."},
+  {q:"Comment lire le Coefficients table d'une régression linéaire ?",a:"• <strong>B</strong> : changement de DV pour +1 unité d'IV (direction et taille)<br>• <strong>Sig.</strong> : si p &lt; 0.05 → la relation est significative<br>• <strong>R²</strong> (Model Summary) : % de variance de DV expliqué par l'IV"},
+  {q:"Template pour rédiger un résultat de régression linéaire ?",a:"<em>'A linear regression showed that [IV] was [not] a significant predictor of [DV] (β = X.XX, t(df) = X.XX, p = .XX).'</em><br>Toujours inclure β, t, df et p."},
+  {q:"Quelles sont les golden rules de reporting statistique ?",a:"1. Toujours mentionner le <strong>test utilisé</strong><br>2. Inclure <strong>statistique + p-valeur</strong><br>3. Reporter <strong>M et SD</strong> pour les effets significatifs<br>4. Utiliser <strong>tableaux et graphiques</strong> pour appuyer"}
 ];
 
 VIEWS.flashcards = `
@@ -1436,7 +1716,19 @@ const QUIZ = [
   {q:"Garvey, Kim & Duhachek (2021) ont trouvé quel pattern AI vs Humain ?",opts:["L'AI est toujours préférée","L'humain est toujours préféré","Une interaction : AI pour bad news, humain pour good news","Aucun effet"],correct:2,exp:"Interaction Type d'agent × Valence : bad news → AI préférée ; good news → humain préféré. Pas d'effet principal seul."},
   {q:"Goldstein, Cialdini & Griskevicius (2008) ont mesuré quelle augmentation de réutilisation des serviettes via norme sociale ?",opts:["+10%","+33%","+50%","+75%"],correct:1,exp:"+33% avec le message '75% of guests in this room reuse their towels' vs message standard environnemental."},
   {q:"Mediation répond à quelle question ?",opts:["WHAT","HOW","FOR WHOM","WHEN"],correct:1,exp:"Mediation = HOW does it work? (mécanisme psychologique). Moderation = FOR WHOM."},
-  {q:"Quelle est la deadline de soumission du rapport Matrix ?",opts:["23h59 le jour de S8","23h59 la veille de S8","23h59 le jour de S9","Jour de l'examen final"],correct:1,exp:"Submit slides + report + data : 23h59 LA VEILLE de la Session 8. Pas le jour J."}
+  {q:"Quelle est la deadline de soumission du rapport Matrix ?",opts:["23h59 le jour de S8","23h59 la veille de S8","23h59 le jour de S9","Jour de l'examen final"],correct:1,exp:"Submit slides + report + data : 23h59 LA VEILLE de la Session 8. Pas le jour J."},
+  // S4
+  {q:"Dans Qualtrics, où configure-t-on la Question Randomization pour le between-subjects ?",opts:["Sur la question elle-même","Sur le block (pas la question)","Dans Survey Settings","Dans Distributions"],correct:1,exp:"Block behavior → Question Randomization → 'Present only 1 of total questions'. Cliquer sur le block, pas sur la question individuelle."},
+  {q:"Que signifie la valeur -99 dans un export Qualtrics ?",opts:["Réponse invalide à supprimer","Question vue par le participant mais non répondue","Participant exclu de l'analyse","Valeur par défaut du slider"],correct:1,exp:"-99 = 'Recode seen but unanswered questions as -99'. Distingue les questions vues-non-répondues des questions jamais affichées (missing data)."},
+  {q:"Quel type de question Qualtrics pour mesurer 5 items Likert similaires en une fois ?",opts:["Multiple Choice","Text Entry","Matrix Table","Slider"],correct:2,exp:"Matrix Table : affiche plusieurs items avec la même échelle. Améliore le flux. ⚠️ Overuse décourage les participants sur mobile."},
+  {q:"Quelle est la logique de la DV donation dans le survey WWF ?",opts:["Q11 s'affiche toujours","Q11 s'affiche via Skip Logic","Q11 s'affiche via Display Logic si Q10 = 'donate'","Q11 est randomisée"],correct:2,exp:"Display Logic sur Q11 : 'Display this question only if Q10 → I decide to donate → Is Selected'. Le slider n'apparaît que si le participant choisit de donner."},
+  // S6
+  {q:"Avant de créer un compound score, quelle vérification est obligatoire ?",opts:["Tester la normalité","Calculer la p-valeur","Vérifier Cronbach's alpha ≥ 0.7","Faire une ANOVA"],correct:2,exp:"Cronbach's alpha ≥ 0.7 vérifie la consistance interne (les items mesurent la même chose). Sans ça, additionner les items n'a pas de sens."},
+  {q:"Dans l'output ANOVA, la colonne 'Sig.' donne p = .138. Que conclure ?",opts:["Effet significatif, rejeter H0","Aucune différence significative entre groupes","Il faut faire Tukey","Les variances sont inégales"],correct:1,exp:"p = .138 > 0.05 → non significatif → conserver H0. Aucune différence entre les groupes sur cette variable (cas WWF : Responsibility)."},
+  {q:"Que mesure R² dans une régression linéaire ?",opts:["La pente de la droite de régression","La p-valeur du test","Le % de variance de la DV expliqué par l'IV","Le nombre de participants"],correct:2,exp:"R² = effect size. Ex : R² = 0.03 → l'âge explique 3% de la variance des dons. En sciences sociales, 0.02–0.15 est commun."},
+  {q:"IV = Âge (métrique), DV = Donation (métrique). Quel test ?",opts:["One-Way ANOVA","Chi-square","Independent t-test","Régression linéaire"],correct:3,exp:"METRIC IV → METRIC DV = Régression linéaire. SPSS : Analyze → Regression → Linear."},
+  {q:"Résultats Tukey HSD : Panda vs Rain Forest, Sig. = .041. Conclusion ?",opts:["Pas de différence significative","Différence significative entre Panda et Rain Forest","L'ANOVA est non significative","Il faut relancer Levene"],correct:1,exp:"Sig. = .041 < 0.05 → différence significative entre ces deux groupes (marquée * dans l'output). Rain Forest génère plus de culpabilité que Panda."},
+  {q:"Levene's test donne p = .03. Quelle conséquence pour l'ANOVA ?",opts:["ANOVA standard OK","Utiliser Welch's ANOVA","Utiliser une régression","Augmenter l'échantillon"],correct:1,exp:"p < 0.05 → variances inégales entre groupes → utiliser Welch's ANOVA au lieu de l'ANOVA standard (Levene, 1960)."}
 ];
 
 VIEWS.quiz = `
