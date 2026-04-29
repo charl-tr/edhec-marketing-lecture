@@ -1,0 +1,1472 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Marketing Research Methods · EDHEC · Fiches de révision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burgundy:#5E1937;
+  --burgundy-dark:#3F0F23;
+  --burgundy-light:#7A2447;
+  --yellow:#F7C642;
+  --green:#00B894;
+  --red:#C0392B;
+  --bg:#FAFAF7;
+  --cream:#EFEAE0;
+  --ink:#1A1A1A;
+  --muted:#6B6B6B;
+  --border:#E8E2D8;
+  --border-strong:#D4CCBE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.55;
+  font-size:16px;
+  font-weight:400;
+}
+::selection{background:var(--yellow);color:var(--ink)}
+img{max-width:100%;display:block}
+
+/* HEADER */
+header.app-header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  gap:24px;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{
+  width:40px;height:40px;
+  background:var(--burgundy);
+  display:grid;place-items:center;
+  color:#fff;font-weight:900;font-size:20px;
+  letter-spacing:-0.05em;
+}
+.brand-text h1{
+  font-size:13px;font-weight:800;color:var(--burgundy);
+  text-transform:uppercase;letter-spacing:0.08em;
+  line-height:1.2;
+}
+.brand-text .sub{
+  font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.12em;
+  font-weight:500;margin-top:2px;
+}
+.search-wrap{position:relative;flex:1;max-width:380px}
+.search{
+  width:100%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  padding:11px 14px 11px 38px;
+  font-family:inherit;font-size:13px;
+  color:var(--ink);
+  font-weight:500;
+  transition:.15s;
+}
+.search:focus{outline:none;border-color:var(--burgundy);background:#fff}
+.search::placeholder{color:var(--muted);font-weight:400}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.exam-countdown{
+  font-size:11px;font-weight:700;color:var(--burgundy);
+  text-transform:uppercase;letter-spacing:0.1em;
+  border-left:3px solid var(--yellow);
+  padding-left:12px;
+  white-space:nowrap;
+}
+.exam-countdown small{display:block;color:var(--muted);font-weight:500;letter-spacing:0.05em;margin-top:2px;font-size:9px}
+
+/* NAV */
+nav.app-nav{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+  display:flex;
+  gap:0;
+  overflow-x:auto;
+  position:sticky;top:79px;z-index:99;
+}
+nav.app-nav button{
+  background:none;border:none;
+  padding:14px 20px;
+  font-family:inherit;
+  font-size:11px;font-weight:700;
+  color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.1em;
+  cursor:pointer;
+  border-bottom:3px solid transparent;
+  white-space:nowrap;
+  transition:.15s;
+  position:relative;
+}
+nav.app-nav button:hover{color:var(--burgundy)}
+nav.app-nav button.active{color:var(--burgundy);border-bottom-color:var(--burgundy)}
+nav.app-nav button .badge{
+  display:inline-block;
+  background:var(--yellow);
+  color:var(--ink);
+  font-size:9px;
+  padding:1px 5px;
+  margin-left:6px;
+  font-weight:800;
+  vertical-align:middle;
+}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:40px 32px 80px}
+.view{display:none;animation:fadeIn .25s ease}
+.view.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* TYPOGRAPHY */
+h2.session-title{
+  font-size:42px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:-0.01em;
+  line-height:1.05;
+  color:var(--burgundy);
+  margin-bottom:8px;
+}
+.session-meta{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  font-weight:600;
+  margin-bottom:32px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--border);
+}
+.session-meta strong{color:var(--burgundy)}
+h3.section-title{
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  color:var(--burgundy);
+  margin:48px 0 16px;
+  padding-left:12px;
+  border-left:3px solid var(--burgundy);
+}
+h4.subsection-title{
+  font-size:18px;
+  font-weight:700;
+  color:var(--ink);
+  margin:24px 0 10px;
+}
+p{margin-bottom:14px;color:var(--ink)}
+p.lede{font-size:17px;color:var(--muted);font-weight:400;margin-bottom:24px;line-height:1.6}
+ul,ol{padding-left:22px;margin-bottom:14px}
+li{margin:6px 0}
+strong{font-weight:700}
+em{font-style:italic;color:var(--burgundy-dark)}
+code{font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--cream);padding:2px 6px;color:var(--burgundy-dark)}
+
+/* SURLIGNAGE — bordeaux transparent, sobre */
+.hl{background:rgba(94,25,55,0.10);padding:2px 5px;font-weight:700;color:var(--burgundy-dark);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-strong{background:rgba(94,25,55,0.18);padding:2px 5px;font-weight:700;color:var(--burgundy-dark)}
+
+/* CARDS */
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:24px 28px;
+  margin:16px 0;
+  transition:.2s;
+}
+.card.accent{border-left:4px solid var(--burgundy)}
+.card.warn{border-left:4px solid var(--yellow)}
+.card.tip{border-left:4px solid var(--green)}
+.card:hover{box-shadow:0 4px 16px rgba(94,25,55,.06);transform:translateY(-1px)}
+.card .label{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--burgundy);
+  margin-bottom:8px;
+}
+.card.warn .label{color:#9c7400}
+.card.tip .label{color:#006b56}
+
+/* PEDAGOGICAL CALLOUTS */
+.callout{
+  border:1px solid var(--border-strong);
+  padding:18px 22px;
+  margin:18px 0;
+  background:#fff;
+  position:relative;
+}
+.callout::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;width:4px;
+}
+.callout.intuition::before{background:var(--burgundy)}
+.callout.example::before{background:var(--green)}
+.callout.warning::before{background:var(--yellow)}
+.callout.test::before{background:var(--burgundy-dark)}
+.callout-label{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--burgundy);
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.callout.warning .callout-label{color:#9c7400}
+.callout.example .callout-label{color:#006b56}
+
+/* TABLES */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:18px 0;
+  font-size:14px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+th,td{
+  padding:12px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+th{
+  background:var(--burgundy);
+  color:#fff;
+  font-weight:700;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fdfcf9}
+
+/* IMAGES (slides extraites) */
+.slide-img{
+  border:1px solid var(--border);
+  margin:18px 0;
+  background:#fff;
+  padding:8px;
+}
+.slide-caption{
+  font-size:11px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.1em;
+  font-weight:600;
+  margin-top:-8px;margin-bottom:18px;
+}
+
+/* HOMEPAGE */
+.hero{
+  background:var(--burgundy);
+  color:#fff;
+  padding:48px 40px;
+  margin-bottom:32px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;right:0;
+  width:80px;height:40px;background:var(--yellow);
+}
+.hero::after{
+  content:'';position:absolute;top:40px;right:80px;
+  width:40px;height:24px;background:var(--burgundy-dark);
+}
+.hero h1{
+  font-size:56px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:0.95;
+  margin-bottom:12px;
+}
+.hero .tag{
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.18em;
+  opacity:0.8;margin-bottom:16px;
+}
+.hero p{font-size:18px;color:rgba(255,255,255,.9);font-weight:400;max-width:600px;margin:0}
+
+/* PROGRESS DASHBOARD */
+.progress-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  margin:24px 0;
+}
+.progress-card{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
+}
+.progress-card:hover{border-color:var(--burgundy);transform:translateY(-2px)}
+.progress-ring{
+  width:80px;height:80px;margin:0 auto 12px;
+  position:relative;
+}
+.progress-ring svg{transform:rotate(-90deg)}
+.progress-ring circle{fill:none;stroke-width:6}
+.progress-ring .bg{stroke:var(--cream)}
+.progress-ring .fg{stroke:var(--burgundy);stroke-linecap:square;transition:stroke-dashoffset 1s ease}
+.progress-ring .pct{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-size:18px;font-weight:800;color:var(--burgundy);
+}
+.progress-card .name{
+  font-size:11px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--burgundy);
+  margin-bottom:4px;
+}
+.progress-card .desc{font-size:11px;color:var(--muted);font-weight:500;line-height:1.4}
+
+/* TOC */
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:14px;
+  margin:24px 0;
+}
+.toc-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-left:4px solid var(--burgundy);
+  padding:20px 22px;
+  cursor:pointer;
+  transition:.2s;
+  text-align:left;
+  font-family:inherit;
+  display:block;
+  width:100%;
+}
+.toc-card:hover{
+  background:#fdfcf9;
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(94,25,55,.06);
+}
+.toc-card .num{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--burgundy);margin-bottom:6px;
+}
+.toc-card .title{
+  font-size:15px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.02em;
+  color:var(--ink);margin-bottom:6px;
+  line-height:1.3;
+}
+.toc-card .desc{font-size:12px;color:var(--muted);font-weight:500;line-height:1.5}
+
+/* EXAM-READY BLOC */
+.exam-ready{
+  background:var(--burgundy);
+  color:#fff;
+  padding:32px 36px;
+  margin:32px 0;
+  position:relative;
+}
+.exam-ready::before{
+  content:'';position:absolute;top:0;right:0;
+  width:60px;height:30px;background:var(--yellow);
+}
+.exam-ready .label{
+  font-size:11px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--yellow);margin-bottom:8px;
+}
+.exam-ready h3{
+  font-size:24px;font-weight:800;
+  text-transform:uppercase;letter-spacing:-0.01em;
+  margin-bottom:16px;color:#fff;
+  border:none;padding:0;
+}
+.exam-ready ul{padding-left:20px}
+.exam-ready ul li{margin:8px 0}
+.exam-ready ul li::marker{color:var(--yellow)}
+.exam-ready strong{color:var(--yellow)}
+
+/* FLASHCARDS */
+.fc-container{max-width:640px;margin:32px auto}
+.flashcard{
+  perspective:1500px;
+  height:320px;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+.fc-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(0.4,0,0.2,1);
+}
+.flashcard.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  padding:36px 40px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.fc-front{
+  background:var(--burgundy);
+  color:#fff;
+}
+.fc-front::before{
+  content:'';position:absolute;top:0;right:0;
+  width:60px;height:30px;background:var(--yellow);
+}
+.fc-front .kicker{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--yellow);margin-bottom:12px;
+}
+.fc-front .question{
+  font-size:22px;font-weight:700;line-height:1.3;
+}
+.fc-front .hint{
+  position:absolute;bottom:24px;left:40px;
+  font-size:10px;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.15em;
+  opacity:.6;
+}
+.fc-back{
+  background:#fff;
+  border:2px solid var(--burgundy);
+  transform:rotateY(180deg);
+  overflow-y:auto;
+}
+.fc-back .kicker{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--burgundy);margin-bottom:12px;
+}
+.fc-back .answer{font-size:15px;line-height:1.6;color:var(--ink)}
+.fc-back .answer strong{color:var(--burgundy)}
+
+.fc-controls{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin-top:8px;
+}
+.fc-counter{
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--muted);
+}
+.fc-counter strong{color:var(--burgundy)}
+
+/* BUTTONS */
+.btn{
+  background:var(--burgundy);
+  color:#fff;
+  border:none;
+  padding:13px 26px;
+  font-family:inherit;
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;
+  cursor:pointer;
+  transition:.15s;
+}
+.btn:hover{background:var(--burgundy-dark)}
+.btn.ghost{
+  background:transparent;
+  color:var(--burgundy);
+  border:1px solid var(--burgundy);
+}
+.btn.ghost:hover{background:var(--burgundy);color:#fff}
+.btn.sm{padding:9px 18px;font-size:10px}
+
+/* QUIZ */
+.quiz-q{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:22px 26px;
+  margin:18px 0;
+}
+.quiz-q .qmeta{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--muted);margin-bottom:8px;
+}
+.quiz-q .qtxt{font-size:16px;font-weight:600;margin-bottom:16px;line-height:1.4}
+.quiz-opt{
+  display:block;width:100%;text-align:left;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:12px 16px;
+  margin:8px 0;
+  font-family:inherit;font-size:14px;
+  cursor:pointer;
+  transition:.15s;
+  font-weight:500;
+  color:var(--ink);
+}
+.quiz-opt:hover{border-color:var(--burgundy);background:#fdfcf9}
+.quiz-opt.selected{border-color:var(--burgundy);background:#fdf6f0}
+.quiz-opt.correct{border-color:var(--green);background:#f0fbf6;font-weight:700}
+.quiz-opt.correct::after{content:' ✓';color:var(--green);font-weight:800}
+.quiz-opt.incorrect{border-color:var(--red);background:#fef0ee}
+.quiz-opt.incorrect::after{content:' ✗';color:var(--red);font-weight:800}
+.quiz-opt.disabled{cursor:default}
+.quiz-explain{
+  margin-top:12px;
+  padding:12px 16px;
+  background:var(--cream);
+  border-left:3px solid var(--burgundy);
+  font-size:13px;line-height:1.55;
+  display:none;
+}
+.quiz-explain.show{display:block}
+.quiz-explain strong{color:var(--burgundy)}
+.quiz-score{
+  position:sticky;bottom:20px;
+  background:var(--burgundy);
+  color:#fff;
+  padding:16px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:24px;
+  box-shadow:0 -4px 16px rgba(0,0,0,.12);
+}
+.quiz-score .score-label{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--yellow);
+}
+.quiz-score .score-value{
+  font-size:22px;font-weight:800;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* GLOSSARY */
+.gloss-search{
+  width:100%;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:13px 16px;
+  font-family:inherit;font-size:14px;
+  margin-bottom:20px;
+  font-weight:500;
+}
+.gloss-search:focus{outline:none;border-color:var(--burgundy)}
+.gloss-item{
+  background:#fff;
+  border:1px solid var(--border);
+  border-left:3px solid var(--burgundy);
+  padding:16px 22px;
+  margin:8px 0;
+}
+.gloss-item .term{
+  font-size:13px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--burgundy);
+  margin-bottom:6px;
+}
+.gloss-item .def{font-size:14px;color:var(--ink);line-height:1.55}
+
+/* SEARCH RESULTS */
+.search-hit-card{
+  background:#fff;border:1px solid var(--border);
+  border-left:3px solid var(--burgundy);
+  padding:18px 22px;margin:10px 0;
+}
+.search-hit-card .ctx{
+  font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--burgundy);margin-bottom:8px;
+}
+.search-hit-card .snip{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.search-hit{background:var(--yellow);padding:0 2px;font-weight:700;color:var(--ink)}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:32px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.15em;
+  border-top:1px solid var(--border);
+  margin-top:48px;
+}
+footer .unleash{
+  display:block;
+  font-size:14px;font-weight:800;
+  color:var(--burgundy);
+  margin-bottom:8px;
+  letter-spacing:0.05em;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header.app-header{padding:14px 18px;flex-wrap:wrap;gap:12px}
+  .search-wrap{order:3;flex:1 0 100%}
+  nav.app-nav{padding:0 18px;top:130px}
+  main{padding:24px 18px 60px}
+  h2.session-title{font-size:32px}
+  .hero{padding:32px 24px}
+  .hero h1{font-size:40px}
+}
+
+/* PRINT */
+@media print{
+  header.app-header,nav.app-nav,.fc-controls,.btn,.quiz-score{display:none}
+  .view{display:block!important;page-break-after:always}
+  .card,.callout{break-inside:avoid}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <div class="brand-mark">E</div>
+    <div class="brand-text">
+      <h1>Marketing Research Methods</h1>
+      <div class="sub">EDHEC Business School · S2 2026</div>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input class="search" id="search" placeholder="RECHERCHER (CRONBACH, ANOVA, BIAIS...)"/>
+  </div>
+  <div class="exam-countdown" id="countdown">
+    EXAMEN FINAL
+    <small>30 AVRIL 2026 · 90 MIN</small>
+  </div>
+</header>
+
+<nav class="app-nav" id="nav"></nav>
+
+<main id="main"></main>
+
+<footer>
+  <div class="unleash">UNLEASH TOMORROW</div>
+  EDHEC BUSINESS SCHOOL · MARKETING RESEARCH METHODS · S2 2026
+</footer>
+
+<script>
+// ============ CONFIG ============
+const SESSIONS = [
+  {id:'home',label:'Accueil'},
+  {id:'s1',label:'S1 · Quali',badge:'V1'},
+  {id:'s2',label:'S2 · Quanti',badge:'V1'},
+  {id:'s3',label:'S3 · Pratique',badge:'V1'},
+  {id:'s4',label:'S4 · Qualtrics',badge:'WIP'},
+  {id:'s6',label:'S6 · Analyse',badge:'WIP'},
+  {id:'glossary',label:'Glossaire'},
+  {id:'flashcards',label:'Flashcards'},
+  {id:'quiz',label:'Quiz examen'}
+];
+
+// Progress par session (% mastery — placeholder, à brancher plus tard sur résultats quiz)
+const PROGRESS = {s1:30,s2:25,s3:60,s4:0,s6:0};
+
+// ============ HOMEPAGE ============
+const VIEWS = {};
+
+VIEWS.home = `
+<div class="hero">
+  <div class="tag">FICHES DE RÉVISION · CUTTING-EDGE</div>
+  <h1>Marketing<br>Research<br>Methods</h1>
+  <p>Toutes les fiches du cours, en pédagogie active. Hook → intuition → exemple → piège → test toi. Construit à partir des 5 PDFs officiels (S1, S2, S3, S4, S6).</p>
+</div>
+
+<h3 class="section-title">Ta progression</h3>
+<div class="progress-grid">
+  ${[['s1','S1','Quali'],['s2','S2','Quanti'],['s3','S3','Pratique'],['s4','S4','Qualtrics'],['s6','S6','Analyse']].map(([id,name,desc])=>{
+    const p=PROGRESS[id]||0;
+    const r=32,c=2*Math.PI*r,off=c*(1-p/100);
+    return `<div class="progress-card" onclick="go('${id}')">
+      <div class="progress-ring">
+        <svg width="80" height="80"><circle cx="40" cy="40" r="${r}" class="bg"/><circle cx="40" cy="40" r="${r}" class="fg" stroke-dasharray="${c}" stroke-dashoffset="${off}"/></svg>
+        <div class="pct">${p}%</div>
+      </div>
+      <div class="name">${name}</div>
+      <div class="desc">${desc}</div>
+    </div>`;
+  }).join('')}
+</div>
+
+<h3 class="section-title">Stratégie de révision recommandée</h3>
+<div class="card accent">
+<ol>
+<li><strong>Lire les fiches</strong> session par session (S1 → S6) — 30 min</li>
+<li><strong>Glossaire</strong> pour ancrer les définitions clés — 10 min</li>
+<li><strong>Flashcards</strong> pour mémorisation active — 15 min</li>
+<li><strong>Quiz examen blanc</strong> pour tester la compréhension — 15 min</li>
+</ol>
+</div>
+
+<h3 class="section-title">Sessions du cours</h3>
+<div class="toc-grid">
+${[
+  ['s1','01','Intro & Méthodes Quali','Recherche, opérationnalisation, interviews, focus groups, synthetic data'],
+  ['s2','02','Méthodes Quanti','Surveys vs Expériences, designs factoriels, validité, moderation/mediation'],
+  ['s3','03','Pratique Quali','Pratique en classe : interviews et focus groups + roadmap projet'],
+  ['s4','04','Qualtrics & WWF','Implémentation Qualtrics, between-subjects, cas WWF (à venir)'],
+  ['s6','06','Analyse données','Thematic analysis (Taguette) + SPSS (ANOVA, régression) (à venir)']
+].map(([id,n,t,d])=>`<button class="toc-card" onclick="go('${id}')"><div class="num">Session ${n}</div><div class="title">${t}</div><div class="desc">${d}</div></button>`).join('')}
+</div>
+
+<h3 class="section-title">Outils du cours</h3>
+<table>
+<tr><th>Outil</th><th>Usage</th><th>Quand</th></tr>
+<tr><td><strong>Qualtrics</strong></td><td>Surveys & designs expérimentaux</td><td>ASAP</td></tr>
+<tr><td><strong>SPSS</strong></td><td>Analyses statistiques</td><td>Avant S6</td></tr>
+<tr><td><strong>Taguette</strong></td><td>Codage qualitatif</td><td>Avant S6</td></tr>
+</table>
+
+<div class="exam-ready">
+<div class="label">À retenir absolument</div>
+<h3>Points clés transversaux</h3>
+<ul>
+<li><strong>Surveys</strong> mesurent des relations · <strong>Expériences</strong> établissent la causalité</li>
+<li><strong>3 piliers d'une bonne expérience</strong> : manipulation IV + assignation aléatoire + contrôle des variables externes</li>
+<li><strong>3 conditions pour la causalité</strong> : covariation + précédence temporelle + pas d'explication alternative</li>
+<li><strong>Cronbach's α ≥ 0.7</strong> seuil minimum pour la fiabilité</li>
+<li><strong>p < 0.05</strong> = statistiquement significatif</li>
+<li><strong>Random assignment</strong> = validité interne · <strong>Random sampling</strong> = validité externe</li>
+<li><strong>Choix du test stat</strong> : nominal IV → metric DV (2 gr) = t-test ; (3+) = ANOVA · metric → metric = régression</li>
+</ul>
+</div>
+`;
+
+// ============ S1 ============
+VIEWS.s1 = `
+<h2 class="session-title">S1 · Intro & Méthodes Qualitatives</h2>
+<div class="session-meta">83 SLIDES · LECTURE LOURDE · <strong>STATUT : COMPLET</strong></div>
+
+<div class="callout intuition">
+<div class="callout-label">🎯 Hook</div>
+<p>Imagine que Matrix te demande de comprendre <strong>pourquoi</strong> les jeunes adultes n'achètent pas leurs produits capillaires premium. Tu peux leur balancer un sondage à 1 000 personnes — mais ça te donnera des chiffres sur ce qu'ils font, pas sur <span class="hl">pourquoi</span> ils le font. La méthode qualitative, c'est l'outil pour creuser le pourquoi.</p>
+</div>
+
+<h3 class="section-title">1. Logistique du cours</h3>
+<div class="card accent">
+<ul>
+<li><strong>9 sessions</strong> : S1–S4 cours · S5 & S7 coaching · S8 présentations cohorte · S9 sélection devant Matrix (8 avril)</li>
+<li><strong>Évaluation</strong> : 50% projet Matrix + 50% examen final 30 avril (90 min, Respondus)</li>
+<li><strong>8 sections</strong> du rapport : intro · design & collecte · analyses · interprétation · conclusions/reco · limites · références · contributions</li>
+<li><strong>Absences</strong> : justification au HUB uniquement, pas au prof</li>
+</ul>
+</div>
+
+<h3 class="section-title">2. Quali vs Quanti — la grande distinction</h3>
+<img class="slide-img" src="content/screens/s1_24_quali_vs_quanti-24.png" alt="Tableau quali vs quanti"/>
+<div class="slide-caption">Slide 24 · Sources de l'image : EDHEC S1</div>
+<table>
+<tr><th></th><th>Quantitatif</th><th>Qualitatif</th></tr>
+<tr><td><strong>Focus</strong></td><td>Tester hypothèses/théories</td><td>Explorer idées, formuler hypothèses</td></tr>
+<tr><td><strong>Format</strong></td><td>Nombres, graphiques, tableaux</td><td>Mots</td></tr>
+<tr><td><strong>Échantillon</strong></td><td>Beaucoup de répondants</td><td>Peu de répondants</td></tr>
+<tr><td><strong>Méthodes</strong></td><td>Surveys, expériences (S2 & S4)</td><td>Interviews, focus groups (S1 & S3)</td></tr>
+<tr><td><strong>Caractérisé par</strong></td><td>Test, mesure, objectivité, réplicabilité</td><td>Compréhension, contexte, complexité, subjectivité</td></tr>
+</table>
+
+<h3 class="section-title">3. Définition (Strauss & Corbin, 1998)</h3>
+<div class="card">
+<em>"Any type of research that produces findings <span class="hl">not arrived at by statistical procedures or other means of quantification</span>."</em>
+</div>
+
+<h3 class="section-title">4. Interview vs Focus Group</h3>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p><strong>Interview</strong> = un face-à-face, intime, profondeur maximale. <strong>Focus group</strong> = un groupe de 6–10, dynamique sociale, idées qui émergent du collectif.</p>
+</div>
+<img class="slide-img" src="content/screens/s1_31_focus_vs_interview-31.png" alt="Comparaison focus group vs interview"/>
+<div class="slide-caption">Slide 31 · Sarstedt & Mooi (2019), Table 4.2</div>
+
+<h3 class="section-title">5. Les 3 types d'interviews</h3>
+<img class="slide-img" src="content/screens/s1_34_interview_types-34.png" alt="3 types interviews"/>
+<div class="slide-caption">Slide 34</div>
+<p>Le <strong>semi-structuré</strong> ⭐ est le sweet spot pour la plupart des études marketing : guide avec questions clés mais flexibilité dans le wording et les follow-ups.</p>
+
+<h3 class="section-title">6. Structure d'un guide d'interview</h3>
+<img class="slide-img" src="content/screens/s1_36_guide_structure-36.png" alt="Structure guide interview"/>
+<div class="slide-caption">Slide 36 — 7 étapes</div>
+<ol>
+<li><strong>Introduction + Consentement</strong></li>
+<li><strong>Warm-up</strong> (questions faciles, non menaçantes)</li>
+<li><strong>Grand Tour</strong> ("Tell me about your experience with…")</li>
+<li><strong>Core Questions</strong> : Behaviors · Experiences · Motivations · Perceptions · Decisions</li>
+<li><strong>Probe Questions</strong> ("Can you give an example?")</li>
+<li><strong>Wrap-Up / Démographiques</strong></li>
+<li><strong>Debriefing & Thank you</strong></li>
+</ol>
+
+<h3 class="section-title">7. Bonne ou mauvaise question ?</h3>
+<img class="slide-img" src="content/screens/s1_38_good_bad_questions-38.png" alt="7 questions à analyser"/>
+<div class="slide-caption">Slide 38 · Exercice de discussion</div>
+<div class="callout warning">
+<div class="callout-label">⚠️ Pièges classiques</div>
+<ul>
+<li><strong>Q1, Q2, Q3</strong> : <span class="hl">leading questions</span> — suggèrent leur réponse</li>
+<li><strong>Q4</strong> : binaire forcé (faux dilemme)</li>
+<li><strong>Q5</strong> : <span class="hl">double-barreled puissance 4</span> — trop de variables en une question</li>
+<li><strong>Q6 ✅</strong> : ouverte, narrative, ancrée dans l'expérience</li>
+<li><strong>Q7 ✅</strong> : ouverte, adaptée à un public expert</li>
+</ul>
+</div>
+
+<h3 class="section-title">8. Échantillonnage qualitatif</h3>
+<img class="slide-img" src="content/screens/s1_40_sampling-40.png" alt="Sampling approaches"/>
+<table>
+<tr><th>Approche</th><th>Définition</th><th>Exemple Matrix</th></tr>
+<tr><td><strong>Purposive</strong> ⭐</td><td>Critère a priori, infos riches</td><td>"Femmes 25-35 ayant changé de marque dans les 12 derniers mois"</td></tr>
+<tr><td><strong>Convenience</strong></td><td>Facilement accessibles</td><td>Étudiants EDHEC autour de toi</td></tr>
+<tr><td><strong>Snowball</strong></td><td>Référencements</td><td>Une participante recommande 2 amies</td></tr>
+</table>
+
+<h3 class="section-title">9. Data saturation</h3>
+<img class="slide-img" src="content/screens/s1_42_saturation-42.png" alt="Courbe data saturation"/>
+<div class="slide-caption">Slide 42 · Moser & Korstjens (2018)</div>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p>Tu continues d'interviewer tant que chaque nouvelle interview apporte de <strong>nouveaux thèmes</strong>. Quand tu fais 3 interviews d'affilée sans rien apprendre de neuf — saturation atteinte, tu peux arrêter.</p>
+</div>
+
+<h3 class="section-title">10. Critères du bon interviewer (Kvale, 1994)</h3>
+<img class="slide-img" src="content/screens/s1_47_interviewer_criteria-47.png" alt="Critères Kvale"/>
+<p>12 qualités : Knowledgeable · Structuring · Clear · Gentle · Sensitive · Open · Steering · Critical · Remembering · Interpreting · Balanced · Ethically sensitive.</p>
+
+<h3 class="section-title">11. Focus groups : modérateur vs observateur</h3>
+<div class="card">
+<h4 class="subsection-title">Le modérateur</h4>
+<ul>
+<li>Introduit le but, établit les <strong>règles du jeu et la sécurité psychologique</strong></li>
+<li>Suit le guide tout en restant flexible</li>
+<li>Garde la conversation sur les rails</li>
+<li><span class="hl">Encourage la participation équitable</span> (limiter les voix dominantes, inviter les plus discrets)</li>
+<li>Reste neutre, évite les leading questions</li>
+</ul>
+</div>
+<div class="card">
+<h4 class="subsection-title">L'observateur</h4>
+<ul>
+<li><strong>Observe sans participer</strong> (ne parle pas)</li>
+<li>Présent dans la même pièce ou derrière un miroir sans tain</li>
+<li>Tâches : écouter, prendre des notes, <strong>observer le langage corporel et la dynamique</strong>, signaler des points à creuser au modérateur</li>
+</ul>
+</div>
+
+<h3 class="section-title">12. Focus group — paramètres pratiques</h3>
+<table>
+<tr><td><strong>Sample</strong></td><td><span class="hl">6–10 personnes</span> par focus group</td></tr>
+<tr><td><strong>Durée</strong></td><td>60 à 120 minutes</td></tr>
+<tr><td><strong>Données</strong></td><td>Enregistrements à transcrire + notes</td></tr>
+</table>
+
+<h3 class="section-title">13. Préparer le discussion guide en 7 étapes</h3>
+<img class="slide-img" src="content/screens/s1_65_discussion_guide_steps-65.png" alt="Préparation discussion guide"/>
+<ol>
+<li><strong>Brainstorm</strong> (alignés sur la RQ + desk research)</li>
+<li><strong>Sequence</strong> : du général au spécifique</li>
+<li><strong>Phrase</strong> : open-ended, conversationnel</li>
+<li><strong>Estimate the time</strong> par question</li>
+<li><strong>Obtain feedback</strong> des pairs</li>
+<li><strong>Revise</strong></li>
+<li><strong>Test</strong> avec un mock focus group</li>
+</ol>
+
+<h3 class="section-title">14. Exemple : Retributive Philanthropy (Milne et al., 2025)</h3>
+<img class="slide-img" src="content/screens/s1_50_retributive_philanthropy-50.png" alt="Retributive philanthropy"/>
+<div class="card tip">
+<div class="label">💡 Leçon clé</div>
+<p>10 interviews recrutées via TikTok pour explorer un phénomène nouveau (donner pour punir). Quand un phénomène est <strong>nouveau et non théorisé</strong>, on choisit la quali — les chiffres ne savent pas mesurer ce qu'on n'a pas encore conceptualisé.</p>
+</div>
+
+<h3 class="section-title">15. Outlook : Synthetic Data</h3>
+<img class="slide-img" src="content/screens/s1_80_hallucinations-80.png" alt="OpenAI hallucinations"/>
+<div class="callout warning">
+<div class="callout-label">⚠️ État de la recherche (2026)</div>
+<p>Les LLMs <strong>hallucinent</strong> (OpenAI, sept 2025) et <strong>ne simulent pas la psychologie humaine</strong> (Schröder et al., 2025 — "Large Language Models Do Not Simulate Human Psychology"). Pour l'instant, on ne peut PAS remplacer les vrais participants par des synthetic users.</p>
+</div>
+
+<div class="exam-ready">
+<div class="label">⚡ Examen</div>
+<h3>Points S1 à retenir</h3>
+<ul>
+<li>Définition de Strauss & Corbin</li>
+<li>Tableau quali vs quanti (7 dimensions)</li>
+<li>Différence interview vs focus group (interaction, peer pressure, sujets sensibles)</li>
+<li>3 types d'interviews (non/semi/structurée)</li>
+<li>Structure 7 étapes du guide d'interview</li>
+<li>3 approches sampling : purposive, convenience, snowball</li>
+<li>Concept de <strong>data saturation</strong> (Moser & Korstjens, 2018)</li>
+<li>Modérateur vs observateur dans focus group</li>
+<li>Sample focus group : 6-10 personnes, 60-120 min</li>
+<li>Synthetic data : limites actuelles (hallucinations, pas de psychologie humaine)</li>
+</ul>
+</div>
+`;
+
+// ============ S2 ============
+VIEWS.s2 = `
+<h2 class="session-title">S2 · Méthodes Quantitatives</h2>
+<div class="session-meta">64 SLIDES · LECTURE LOURDE · <strong>STATUT : COMPLET</strong></div>
+
+<div class="callout intuition">
+<div class="callout-label">🎯 Hook</div>
+<p>Tu te demandes si une pub Instagram authentique fait plus acheter qu'une pub product-focused. Deux options : (1) demander aux gens "quelle pub vous fait acheter le plus ?" → <strong>survey</strong>, ou (2) leur en montrer une au hasard et mesurer ce qu'ils font ensuite → <strong>expérience</strong>. Seule la deuxième te dit que la pub <span class="hl">cause</span> l'achat.</p>
+</div>
+
+<h3 class="section-title">1. Surveys vs Expériences — la grande division</h3>
+<table>
+<tr><th>Critère</th><th>Survey</th><th>Expérience</th></tr>
+<tr><td><strong>Question</strong></td><td>Quelles relations existent ?</td><td>X cause-t-il Y ?</td></tr>
+<tr><td><strong>Manipulation IV</strong></td><td>Non (mesure passive)</td><td>Oui (active)</td></tr>
+<tr><td><strong>Random assignment</strong></td><td>Non</td><td>Oui</td></tr>
+<tr><td><strong>Inférence</strong></td><td>Corrélation</td><td><strong>Causalité</strong></td></tr>
+</table>
+
+<h3 class="section-title">2. Structure d'un survey rigoureux</h3>
+<ol>
+<li>Introduction / Consentement</li>
+<li>Screening</li>
+<li>Questions comportementales</li>
+<li>Questions attitudinales</li>
+<li>Variables principales</li>
+<li>Démographiques</li>
+<li>Debriefing</li>
+</ol>
+<div class="callout warning">
+<div class="callout-label">⚠️ Règle critique</div>
+<p>Tous les <strong>quality checks</strong> (attention, manipulation, realism) sont placés <span class="hl">APRÈS la VD</span> pour éviter le priming. Sinon tu alertes le participant et tu biaises sa réponse.</p>
+</div>
+
+<h3 class="section-title">3. Échelles de mesure</h3>
+<table>
+<tr><th>Échelle</th><th>Quand l'utiliser</th></tr>
+<tr><td><strong>Likert (1–5/1–7)</strong> ⭐</td><td>Standard sciences sociales</td></tr>
+<tr><td>Différentiel sémantique</td><td>Bipolaire (chaud–froid)</td></tr>
+<tr><td>Choix multiples</td><td>Démographiques, options exclusives</td></tr>
+<tr><td>Rank order</td><td>Forcer les priorités</td></tr>
+<tr><td>VAS (slider)</td><td>Mesure continue précise</td></tr>
+<tr><td>Open-ended</td><td>Exploration, citations</td></tr>
+</table>
+
+<h3 class="section-title">4. Cronbach's alpha & opérationnalisation</h3>
+<div class="card accent">
+<p><strong>Concept ≠ Variable</strong>. L'opérationnalisation, c'est le pont entre l'idée abstraite et la mesure concrète.</p>
+<p>Exemple : <em>Brand Trust</em> (Delgado-Ballester, 2004) → 2 items Likert.</p>
+<p>Pour combiner plusieurs items, vérifier <strong>Cronbach's α ≥ 0.7</strong>.</p>
+</div>
+
+<h3 class="section-title">5. Biais courants</h3>
+<table>
+<tr><th>Biais</th><th>Description</th><th>Solution</th></tr>
+<tr><td><strong>Social Desirability</strong></td><td>Réponses socialement acceptables</td><td>Anonymat, formulation neutre</td></tr>
+<tr><td><strong>Acquiescence</strong></td><td>Tendance à approuver</td><td>Reverse-coded items</td></tr>
+<tr><td><strong>Common Method</strong></td><td>Même méthode → corrélations gonflées</td><td>Méthodes différentes</td></tr>
+<tr><td><strong>Straightlining</strong></td><td>Même réponse partout</td><td>Attention checks + reverse</td></tr>
+</table>
+
+<h3 class="section-title">6. Designs expérimentaux : les 3 piliers</h3>
+<div class="card accent">
+<p>Une bonne expérience repose sur :</p>
+<ol>
+<li><strong>Manipulation</strong> de la variable indépendante</li>
+<li><strong>Random assignment</strong> aux conditions</li>
+<li><strong>Contrôle</strong> des variables externes</li>
+</ol>
+<p style="margin-top:8px"><span class="hl">X (IV) ━[Causal]━&gt; Y (VD)</span></p>
+</div>
+
+<h3 class="section-title">7. Corrélation ≠ Causalité</h3>
+<div class="callout warning">
+<div class="callout-label">⚠️ Exemples célèbres</div>
+<ul>
+<li><strong>Chocolat & Nobel</strong> : confondante = richesse nationale</li>
+<li><strong>Glaces & noyades</strong> : confondante = chaleur de l'été</li>
+</ul>
+</div>
+<p><strong>Les 3 conditions pour la causalité</strong> :</p>
+<ol>
+<li><strong>Covariation</strong> : X et Y bougent ensemble</li>
+<li><strong>Précédence temporelle</strong> : X précède Y</li>
+<li><strong>Pas d'explications alternatives</strong> : variables externes contrôlées</li>
+</ol>
+
+<h3 class="section-title">8. Random Sampling vs Random Assignment</h3>
+<div class="callout warning">
+<div class="callout-label">⚠️ Souvent confondu à l'examen</div>
+</div>
+<table>
+<tr><th></th><th>Random Sampling</th><th>Random Assignment</th></tr>
+<tr><td><strong>Concerne</strong></td><td>Sélection des participants</td><td>Allocation aux conditions</td></tr>
+<tr><td><strong>Garantit</strong></td><td>Représentativité</td><td>Comparabilité des groupes</td></tr>
+<tr><td><strong>Protège</strong></td><td>Validité externe</td><td><strong>Validité interne</strong></td></tr>
+</table>
+<p>Pour la <strong>causalité</strong>, le random assignment est prioritaire.</p>
+
+<h3 class="section-title">9. Between vs Within Subjects</h3>
+<table>
+<tr><th></th><th>Between-Subjects</th><th>Within-Subjects</th></tr>
+<tr><td><strong>Principe</strong></td><td>Une seule condition par participant</td><td>Toutes les conditions par participant</td></tr>
+<tr><td><strong>Avantage</strong></td><td>Pas de carryover, validité interne</td><td>Plus de puissance statistique</td></tr>
+<tr><td><strong>Inconvénient</strong></td><td>Plus de participants requis</td><td>Order effects, fatigue</td></tr>
+</table>
+<p>Cas <strong>WWF</strong> (S4/S6) = between-subjects, 4 conditions × 30 participants = 120.</p>
+
+<h3 class="section-title">10. Designs factoriels (2×2 et plus)</h3>
+<div class="callout example">
+<div class="callout-label">🎯 Exemple Garvey, Kim & Duhachek (2021, JM)</div>
+<p><em>"Bad News? Send an AI. Good News? Send a Human."</em></p>
+<ul>
+<li><strong>IV1</strong> : Type d'agent (AI vs Humain)</li>
+<li><strong>IV2</strong> : Valence (Bonne vs Mauvaise nouvelle)</li>
+<li><strong>VD</strong> : Réaction du consommateur</li>
+</ul>
+<p><strong>Résultat : interaction !</strong> Pas d'effet principal du type d'agent, mais bad news → consommateurs préfèrent l'AI ; good news → préfèrent l'humain. <span class="hl">L'effet DÉPEND de la valence.</span></p>
+</div>
+
+<h3 class="section-title">11. Validité interne — 7 menaces</h3>
+<table>
+<tr><th>Menace</th><th>Description</th></tr>
+<tr><td><strong>Selection</strong></td><td>Différences pré-existantes (sol : random assignment)</td></tr>
+<tr><td><strong>History</strong></td><td>Événements externes pendant l'expé</td></tr>
+<tr><td><strong>Maturation</strong></td><td>Changements naturels (fatigue, apprentissage)</td></tr>
+<tr><td><strong>Testing</strong></td><td>Mesure antérieure influence les suivantes</td></tr>
+<tr><td><strong>Instrumentation</strong></td><td>Changement dans les instruments de mesure</td></tr>
+<tr><td><strong>Statistical Regression</strong></td><td>Scores extrêmes reviennent vers la moyenne</td></tr>
+<tr><td><strong>Attrition (Mortality)</strong></td><td>Dropout différentiel entre conditions</td></tr>
+</table>
+
+<h3 class="section-title">12. Validité interne ⇄ externe : le trade-off</h3>
+<div class="callout intuition">
+<div class="callout-label">💡 Intuition</div>
+<p><strong>Lab</strong> = contrôle élevé, réalisme faible (validité interne).<br><strong>Field</strong> = réalisme élevé, contrôle faible (validité externe).<br>Best practice : <strong>multi-études</strong> combinant les deux.</p>
+</div>
+<div class="card tip">
+<div class="label">🎯 Goldstein, Cialdini & Griskevicius (2008, JCR)</div>
+<p>Field experiment dans de vrais hôtels. IV manipulée = panneau dans la chambre. <em>"75% of guests in this room reuse their towels"</em> a augmenté la réutilisation de <span class="hl">+33%</span> vs message standard.</p>
+</div>
+
+<h3 class="section-title">13. p-value & significativité</h3>
+<table>
+<tr><td><strong>p &lt; 0.001</strong></td><td>Très forte (***)</td></tr>
+<tr><td><strong>p &lt; 0.01</strong></td><td>Forte (**)</td></tr>
+<tr><td><strong>p &lt; 0.05</strong></td><td><span class="hl">Suffisante (*) — seuil standard</span></td></tr>
+<tr><td><strong>p &gt; 0.05</strong></td><td>Non significatif</td></tr>
+</table>
+<div class="callout warning">
+<div class="callout-label">⚠️ Piège sémantique</div>
+<p><em>"significant"</em> en stats ≠ <em>"important"</em> en langage courant. Un effet peut être significatif et trivialement petit.</p>
+</div>
+
+<h3 class="section-title">14. Moderation & Mediation</h3>
+<div class="card">
+<p>Une expé basique répond à <strong>"Does it work?"</strong>. Une bonne recherche pose plus :</p>
+<ul>
+<li><strong>HOW</strong> ça marche ? → <strong>Mediation</strong> (mécanisme psychologique)</li>
+<li><strong>FOR WHOM</strong> ça marche ? → <strong>Moderation</strong> (boundary conditions)</li>
+</ul>
+</div>
+<div class="callout example">
+<div class="callout-label">🎯 Pour Matrix</div>
+<ul>
+<li><strong>Moderation</strong> : <em>"Notre campagne marche, MAIS uniquement pour [segment]"</em></li>
+<li><strong>Mediation</strong> : <em>"Notre campagne marche PARCE QU'elle déclenche [processus]"</em></li>
+</ul>
+</div>
+
+<h3 class="section-title">15. A/B Testing & cas Obama 2012</h3>
+<div class="card">
+<p><strong>500+ A/B tests</strong> sur le site de campagne. Total : 1 milliard $ levés (690M $ digital), +379% vs Romney. Conversion dons +49%, sign-ups +161%.</p>
+<p><em>"Experiment early and often"</em> — décision data-driven.</p>
+</div>
+
+<div class="exam-ready">
+<div class="label">⚡ Examen</div>
+<h3>Points S2 à retenir</h3>
+<ul>
+<li><strong>Surveys</strong> mesurent les relations · <strong>Expériences</strong> établissent la causalité</li>
+<li><strong>3 piliers expérience</strong> : manipulation IV + random assignment + contrôle</li>
+<li><strong>3 conditions causalité</strong> : covariation + précédence + pas d'alternative</li>
+<li><strong>Random assignment ≠ random sampling</strong> (interne vs externe)</li>
+<li><strong>Cronbach α ≥ 0.7</strong>, p < 0.05 standard</li>
+<li><strong>4 biais</strong> : Social Desirability, Acquiescence, Common Method, Straightlining</li>
+<li><strong>7 menaces validité interne</strong> : Selection, History, Maturation, Testing, Instrumentation, Stat Regression, Attrition</li>
+<li><strong>Mediation = HOW · Moderation = FOR WHOM</strong></li>
+<li>Aaker (1997) : 5 dimensions de personnalité de marque</li>
+<li>Goldstein (2008) hotel : +33% réutilisation serviettes via norme sociale</li>
+<li>Garvey (2021) : interaction AI/Humain × Bad/Good news</li>
+</ul>
+</div>
+`;
+
+// ============ S3 ============
+VIEWS.s3 = `
+<h2 class="session-title">S3 · Pratique des Méthodes Qualitatives</h2>
+<div class="session-meta">9 SLIDES · SESSION PRATIQUE · <strong>STATUT : COMPLET</strong></div>
+
+<div class="callout intuition">
+<div class="callout-label">🎯 Hook</div>
+<p>Tu peux lire pendant des heures comment conduire une interview, mais tant que tu n'en as pas fait une vraie, tu ne sais pas. Cette session t'oblige à passer à l'acte, encadré, avant de le faire en autonomie pour ton projet Matrix.</p>
+</div>
+
+<h3 class="section-title">1. Course Roadmap — vue d'ensemble</h3>
+<img class="slide-img" src="content/screens/s3_02_roadmap-2.png" alt="Course roadmap"/>
+<div class="slide-caption">Slide 2 · Roadmap complète du semestre</div>
+
+<table>
+<tr><th>Période</th><th>Ce que tu dois préparer</th></tr>
+<tr><td><strong>Avant S3</strong></td><td>Réviser le research proposal (feedback reçu)</td></tr>
+<tr><td><strong>Avant S4</strong></td><td>Interview guide / survey Qualtrics / experiment Qualtrics + <span class="hl">pilot test</span> + plan de recrutement + sections 1 & 2 du rapport</td></tr>
+<tr><td><strong>S5 — Coaching</strong></td><td>"Critical eye" + finalize design + <span class="hl">GET VALIDATION BEFORE DATA COLLECTION</span></td></tr>
+<tr><td><strong>S6 → S7</strong></td><td>Collecter, analyser, interpréter, draft full report + slides</td></tr>
+<tr><td><strong>S7 — Coaching</strong></td><td>"Critical eye" rapport + <span class="hl">GET VALIDATION FOR ANALYSIS</span></td></tr>
+<tr><td><strong>SUBMIT</strong></td><td>Slides + Report + Data, <strong>DL : 23h59 la veille de S8</strong></td></tr>
+<tr><td><strong>S8 / S9</strong></td><td>Présentations cohorte / sélection devant Matrix (8 avril)</td></tr>
+<tr><td><strong>30 avril</strong></td><td>Examen final (50% de la note)</td></tr>
+</table>
+
+<div class="callout warning">
+<div class="callout-label">⚠️ Piège</div>
+<p>Commencer à collecter les données avant validation S5 = risque énorme de devoir tout refaire. Le coaching n'est pas optionnel.</p>
+</div>
+
+<h3 class="section-title">2. Outils à installer</h3>
+<table>
+<tr><th>Outil</th><th>Pour quoi</th><th>Quand</th></tr>
+<tr><td><strong>Qualtrics</strong></td><td>Surveys + designs expérimentaux</td><td><span class="hl">ASAP</span></td></tr>
+<tr><td><strong>SPSS</strong></td><td>Analyse quantitative</td><td>Avant S6</td></tr>
+<tr><td><strong>Taguette</strong></td><td>Codage qualitatif</td><td>Avant S6</td></tr>
+</table>
+
+<h3 class="section-title">3. Part 1 — Pratique d'interviews (en classe)</h3>
+<img class="slide-img" src="content/screens/s3_04_part1-4.png" alt="Part 1 instructions"/>
+<ul>
+<li>Équipes de <strong>3 étudiants</strong> : interviewer · interviewee · note taker</li>
+<li>Choisir un template OU utiliser le guide d'interview du projet</li>
+<li><strong>30 minutes</strong> chrono</li>
+<li>Brief en classe à la fin</li>
+</ul>
+
+<h3 class="section-title">4. Part 2 — Pratique de focus groups</h3>
+<img class="slide-img" src="content/screens/s3_06_part2-6.png" alt="Part 2 instructions"/>
+<ul>
+<li>S'asseoir avec son <strong>équipe projet Matrix</strong></li>
+<li>Rôles : <strong>1 modérateur · 1 observateur</strong> · le reste = participants</li>
+<li><strong>30 minutes</strong> chrono</li>
+</ul>
+
+<div class="callout test">
+<div class="callout-label">✅ Test toi</div>
+<p><strong>Q</strong> : Tu finalises ton plan de collecte. Tu peux commencer à recruter ?</p>
+<p><strong>R</strong> : <strong>NON</strong>, pas avant la validation du coach en S5. <em>"GET VALIDATION BEFORE DATA COLLECTION"</em> est explicite dans la roadmap.</p>
+</div>
+`;
+
+// ============ S4 / S6 placeholders ============
+VIEWS.s4 = `
+<h2 class="session-title">S4 · Implémentation Quantitative · Qualtrics</h2>
+<div class="session-meta">43 SLIDES · WIP · <strong>FICHE EN COURS DE RÉDACTION</strong></div>
+<div class="callout warning">
+<div class="callout-label">⚠️ Work in progress</div>
+<p>L'extraction structurée de S4 est en cours. Contenu prévisionnel :</p>
+<ul>
+<li>Cas pédagogique <strong>WWF</strong> (4 campagnes : Panda, Deer, Rainforest, Rhino)</li>
+<li>Setup Qualtrics : intro/consent → screening → randomisation between-subjects → DV → démos → debrief</li>
+<li>Types de questions Qualtrics : Multiple choice, Text/Graphic, Matrix table, Slider, Form field</li>
+<li>Quality checks toujours APRÈS la VD</li>
+</ul>
+</div>
+`;
+
+VIEWS.s6 = `
+<h2 class="session-title">S6 · Analyse des Données</h2>
+<div class="session-meta">76 SLIDES · WIP · <strong>FICHE EN COURS DE RÉDACTION</strong></div>
+<div class="callout warning">
+<div class="callout-label">⚠️ Work in progress</div>
+<p>La session la plus dense. Contenu prévisionnel :</p>
+<ul>
+<li><strong>Partie 1 — Quali</strong> : Thematic analysis (6 phases Braun & Clarke 2006), Content analysis, codage déductif/inductif, Taguette</li>
+<li><strong>Partie 2 — Préparation données</strong> : compound scores SPSS, Cronbach α</li>
+<li><strong>Partie 3 — SPSS</strong> : choix du test (t-test/ANOVA/régression/chi-square), Levene, ANOVA WWF, post-hoc Tukey HSD, lecture outputs, interpretation des résultats WWF (Rainforest et Rhino &gt;&gt; Panda et Deer pour les dons)</li>
+<li><strong>Reporting</strong> : F(df1,df2)=X.XX, p=.XX format APA</li>
+</ul>
+</div>
+`;
+
+// ============ GLOSSARY ============
+const GLOSSARY = [
+  {term:"A/B Testing",def:"Expérience où 2+ versions d'une variable sont présentées à des groupes comparables. Cas Obama 2012 : 500+ tests, +49% conversions de dons."},
+  {term:"Acquiescence Bias",def:"Tendance à approuver les affirmations indépendamment du contenu. Solution : reverse-coded items."},
+  {term:"ANOVA (One-way)",def:"Compare les moyennes entre 3+ groupes. IV nominal, DV métrique. Output clé : F, df, p-value."},
+  {term:"Attrition (Mortality)",def:"Dropout systématique de participants pendant l'expérience, surtout s'il diffère selon les conditions. Menace majeure à la validité interne."},
+  {term:"Between-subjects design",def:"Chaque participant n'est exposé qu'à UNE seule condition. Pas de carryover. Cas WWF = between-subjects."},
+  {term:"Cronbach's Alpha (α)",def:"Mesure de consistance interne d'une échelle multi-items. Seuils : ≥0.9 excellent, ≥0.8 bon, ≥0.7 acceptable (standard)."},
+  {term:"Data Saturation",def:"Point où la collecte qualitative ne produit plus que de la redondance. Critère principal d'arrêt (Moser & Korstjens, 2018)."},
+  {term:"Double-barreled Question",def:"Question piège qui en contient deux : 'Cette marque est innovante ET fiable ?'. À éviter."},
+  {term:"External Validity",def:"Capacité des findings à se généraliser à d'autres populations, contextes, époques, opérationnalisations. Protégée par random sampling et réplications."},
+  {term:"Factorial Design (2×2)",def:"Test simultané de 2+ IV. Permet d'identifier main effects + interactions. Ex : Garvey et al. 2021 (AI vs Humain × Bad/Good news)."},
+  {term:"Field Experiment",def:"Expérience menée dans un environnement naturel (ex : Goldstein 2008 dans de vrais hôtels). Validité externe haute, contrôle moindre."},
+  {term:"Focus Group",def:"Interview de 6-10 personnes simultanément, menée par un modérateur. Durée 60-120 min. Sarstedt & Mooi (2019)."},
+  {term:"Internal Validity",def:"Capacité à conclure que la manipulation IV cause l'effet observé sur la VD. Protégée par random assignment, settings contrôlés, manipulation checks."},
+  {term:"Interaction Effect",def:"L'effet d'une IV dépend du niveau d'une autre IV. Souvent les findings les plus intéressants. Ex : effet du type d'agent dépend de la valence (Garvey 2021)."},
+  {term:"Leading Question",def:"Question orientant la réponse : 'Vous êtes d'accord que…?'. À éviter."},
+  {term:"Levene's Test",def:"Test de l'homogénéité des variances (assumption ANOVA). p > 0.05 = OK. p < 0.05 = utiliser Welch's ANOVA."},
+  {term:"Likert Scale",def:"Échelle d'accord avec une affirmation (1-5 ou 1-7). La plus courante en marketing research."},
+  {term:"Manipulation Check",def:"Question vérifiant que la manipulation a été perçue. Toujours placée APRÈS la VD pour éviter le priming."},
+  {term:"Mediation",def:"Mécanisme psychologique entre IV et DV. Répond à la question HOW does it work?"},
+  {term:"Moderation",def:"Boundary conditions : pour qui ou dans quel contexte l'effet est plus fort/faible. Répond à FOR WHOM does it work?"},
+  {term:"Operationalization",def:"Passage du concept abstrait (Brand Trust) à la variable mesurable (2 items Likert). Définition conceptuelle → définition opérationnelle."},
+  {term:"P-value",def:"Probabilité d'observer ce résultat (ou plus extrême) si H₀ est vraie. Seuil standard : p < 0.05."},
+  {term:"Pilot Test",def:"Test préliminaire d'un survey/expérience avant le lancement officiel. Vérifie clarté, timing, manipulation check."},
+  {term:"Post-hoc Test",def:"Test après ANOVA significatif pour identifier QUELS groupes diffèrent. Tukey HSD = le plus courant et conservateur."},
+  {term:"Purposive Sampling",def:"Sélection de participants selon un critère a priori (informateurs riches en information)."},
+  {term:"Qualtrics",def:"Plateforme de design de surveys et expériences. Outil principal du cours pour la collecte quantitative."},
+  {term:"Random Assignment",def:"Affecter les participants aux conditions au hasard. Protège la VALIDITÉ INTERNE. Probabiliste, pas déterministe."},
+  {term:"Random Sampling",def:"Tirage aléatoire de participants depuis la population. Protège la VALIDITÉ EXTERNE (généralisation)."},
+  {term:"Reverse-coded Item",def:"Item formulé à l'opposé du construct. Détecte straightlining et acquiescence."},
+  {term:"Sample Saturation",def:"Voir 'Data Saturation'."},
+  {term:"Semi-structured Interview",def:"Guide avec questions clés mais flexibilité dans formulation et follow-ups. Format standard pour Matrix."},
+  {term:"Snowball Sampling",def:"Recrutement par référencement entre participants. Utile pour populations difficiles d'accès."},
+  {term:"Social Desirability Bias",def:"Répondre de manière socialement acceptable. Solution : anonymat, formulation neutre."},
+  {term:"SPSS",def:"Logiciel statistique IBM. Outil principal du cours pour ANOVA, régression."},
+  {term:"Straightlining",def:"Sélectionner la même réponse partout. Détection : attention checks + reverse-coded."},
+  {term:"Survey",def:"Méthode quantitative de collecte par questionnaire. Mesure des relations entre variables. Ne peut PAS établir la causalité."},
+  {term:"Synthetic Data",def:"Données générées par IA (LLMs) pour remplacer des participants. Limites actuelles : hallucinations, ne simulent pas la psychologie humaine (Schröder et al. 2025)."},
+  {term:"Taguette",def:"Outil gratuit collaboratif de codage qualitatif (app.taguette.org). Workflow : Import → Tag → Review → Export."},
+  {term:"Thematic Analysis",def:"Approche qualitative en 6 phases (Braun & Clarke 2006) : familiarisation → codes initiaux → recherche thèmes → révision → définition → rédaction."},
+  {term:"Tukey HSD",def:"Honestly Significant Difference (Tukey 1949). Test post-hoc le plus courant et conservateur. Contrôle le family-wise error rate."},
+  {term:"Within-subjects design",def:"Chaque participant voit toutes les conditions. Plus puissant statistiquement mais risque de biais d'ordre."}
+];
+
+VIEWS.glossary = `
+<h2 class="session-title">Glossaire transversal</h2>
+<div class="session-meta">${GLOSSARY.length} ENTRÉES · TOUTES SESSIONS</div>
+<input class="gloss-search" id="gloss-search" placeholder="FILTRER LE GLOSSAIRE..." oninput="renderGlossary(this.value)"/>
+<div id="gloss-list"></div>
+`;
+
+// ============ FLASHCARDS ============
+const FLASHCARDS = [
+  {q:"Quelle est LA différence centrale entre survey et expérience ?",a:"<strong>Surveys</strong> mesurent des relations entre variables. <strong>Expériences</strong> établissent la causalité grâce à la <strong>manipulation de l'IV</strong> + le <strong>random assignment</strong>."},
+  {q:"Quelles sont les 3 conditions pour établir la causalité ?",a:"1. <strong>Covariation</strong> (X et Y bougent ensemble)<br>2. <strong>Précédence temporelle</strong> (X avant Y)<br>3. <strong>Pas d'explications alternatives</strong> (variables externes contrôlées)"},
+  {q:"Quels sont les 3 piliers d'une bonne expérience ?",a:"1. <strong>Manipulation</strong> de la variable indépendante<br>2. <strong>Random assignment</strong> aux conditions<br>3. <strong>Contrôle</strong> des variables externes"},
+  {q:"Quel est le seuil acceptable de Cronbach's alpha ?",a:"<strong>α ≥ 0.7</strong> (acceptable, standard).<br>≥ 0.9 excellent · ≥ 0.8 bon · ≥ 0.7 acceptable · ≥ 0.6 questionnable · &lt; 0.6 médiocre."},
+  {q:"Quel test pour IV nominal (3+ groupes) → DV métrique ?",a:"<strong>One-way ANOVA</strong>. Pour 2 groupes seulement : t-test indépendant."},
+  {q:"Quel test pour IV métrique → DV métrique ?",a:"<strong>Régression linéaire</strong>. SPSS : Analyze → Regression → Linear."},
+  {q:"Que dit l'ANOVA et que ne dit-elle PAS ?",a:"L'ANOVA dit <strong>SI</strong> au moins une moyenne diffère, mais pas <strong>OÙ</strong>. Pour ça il faut un test <strong>post-hoc</strong> (Tukey HSD le plus courant)."},
+  {q:"Différence entre random assignment et random sampling ?",a:"<strong>Random assignment</strong> = affectation aux conditions au hasard → validité <strong>interne</strong>.<br><strong>Random sampling</strong> = tirage aléatoire de l'échantillon → validité <strong>externe</strong> (généralisation)."},
+  {q:"Quelles sont les 6 phases de l'analyse thématique (Braun & Clarke, 2006) ?",a:"1. Familiarisation<br>2. Codes initiaux<br>3. Recherche de thèmes<br>4. Révision<br>5. Définition/nommage<br>6. Rédaction"},
+  {q:"Citer les 4 biais courants dans les surveys.",a:"1. <strong>Social Desirability</strong><br>2. <strong>Acquiescence</strong> (tendance à approuver)<br>3. <strong>Common Method</strong><br>4. <strong>Straightlining</strong> (même réponse partout)"},
+  {q:"Quelles sont les 3 approches d'échantillonnage qualitatif ?",a:"1. <strong>Purposive</strong> (critère a priori, infos riches)<br>2. <strong>Convenience</strong> (accessibilité)<br>3. <strong>Snowball</strong> (référencements)"},
+  {q:"Qu'est-ce que la data saturation ?",a:"Point où la collecte de nouvelles données qualitatives ne produit plus que des informations <strong>redondantes</strong>. Critère principal pour décider du nombre d'interviews (Moser & Korstjens, 2018)."},
+  {q:"Pourquoi placer attention/manipulation/realism checks APRÈS la VD ?",a:"Pour éviter le <strong>priming</strong>. Si on les place avant, on alerte le participant sur le construct mesuré et on biaise sa réponse à la VD."},
+  {q:"Combien de participants minimum par condition ?",a:"Préférable : <strong>50–100</strong>. Minimum absolu : <strong>~30 par condition</strong> (designs simples). Designs 2×2 ou plus complexes : davantage."},
+  {q:"Cas WWF : quelles sont les 4 conditions ?",a:"<strong>Panda · Deer · Rainforest · Rhino</strong>. Design between-subjects, 30 participants par condition (n=120, 152 collectés - 32 invalides)."},
+  {q:"Cas WWF : quelles campagnes maximisent les dons ?",a:"<strong>Rainforest (4.73€)</strong> et <strong>Rhino (3.93€)</strong> &gt;&gt; Panda (1.93€) et Deer (2.00€). p &lt; .001 et p = .003. Conclusion : WWF doit utiliser Rainforest ou Rhino."},
+  {q:"Que tester avec Levene's test et comment l'interpréter ?",a:"Test d'homogénéité des variances (assumption ANOVA).<br>• p &gt; 0.05 → variances égales → ANOVA standard OK ✓<br>• p &lt; 0.05 → variances différentes → utiliser Welch's ANOVA"},
+  {q:"Qu'est-ce que l'opérationnalisation ?",a:"Passage du <strong>concept</strong> (abstrait) à la <strong>variable</strong> (mesurable). Définition conceptuelle → définition opérationnelle.<br>Ex : Brand Trust → 2 items Likert (Delgado-Ballester, 2004)."},
+  {q:"Qu'est-ce que Tukey HSD et pourquoi l'utiliser ?",a:"<strong>Honestly Significant Difference</strong> (Tukey, 1949). Test post-hoc qui compare toutes les paires de groupes en contrôlant le <strong>family-wise error rate</strong> (évite les faux positifs sur comparaisons multiples)."},
+  {q:"Quelle structure pour un guide d'interview ?",a:"1. Introduction + Consentement<br>2. Warm-up<br>3. Grand Tour<br>4. Core Questions<br>5. Probe Questions<br>6. Wrap-Up / Démographiques<br>7. Debriefing & Thank you"},
+  {q:"Aaker (1997) : combien de dimensions de personnalité de marque ?",a:"<strong>5 dimensions</strong> : Sincerity, Excitement, Competence, Sophistication, Ruggedness. Étude survey classique (631 répondants × 37 marques × 114 traits)."},
+  {q:"Quelle est la différence entre mediation et moderation ?",a:"<strong>Mediation = HOW</strong> (mécanisme psychologique entre X et Y).<br><strong>Moderation = FOR WHOM</strong> (boundary conditions : effet plus fort/faible selon les caractéristiques)."},
+  {q:"Garvey, Kim & Duhachek (2021) : quel résultat clé ?",a:"<strong>Interaction</strong> Type d'agent × Valence : pas d'effet principal seul, mais bad news → préférence AI ; good news → préférence humain. <em>'Bad News? Send an AI. Good News? Send a Human.'</em>"},
+  {q:"Goldstein, Cialdini & Griskevicius (2008) : quel résultat ?",a:"Field experiment hôtels. Le message <em>'75% of guests in this room reuse their towels'</em> a augmenté la réutilisation de <strong>+33%</strong> vs message standard. Puissance des normes sociales."},
+  {q:"Cite 4 menaces à la validité interne.",a:"Au choix parmi : <strong>Selection bias · History · Maturation · Testing effect · Instrumentation · Statistical regression · Attrition (Mortality)</strong>."},
+  {q:"Différence entre between-subjects et within-subjects ?",a:"<strong>Between</strong> = chaque participant voit UNE condition. <strong>Within</strong> = chaque participant voit TOUTES les conditions. Within = plus de puissance stats mais risque d'order effects."},
+  {q:"Quelles sont les 8 sections du rapport Matrix ?",a:"1. Introduction<br>2. Research design & data collection<br>3. Data analyses<br>4. Interpretation<br>5. Conclusions & recommendations<br>6. Limitations<br>7. References<br>8. Individual contribution statements"},
+  {q:"Sample size focus group ?",a:"<strong>6 à 10 personnes</strong>. Moins → pas assez de diversité. Plus → trop de compétition pour le temps de parole. Durée typique : 60-120 min."},
+  {q:"Pourquoi ne peut-on PAS remplacer les participants par de la synthetic data (à date 2026) ?",a:"Parce que les LLMs <strong>hallucinent</strong> (OpenAI, sept 2025) et <strong>ne simulent pas la psychologie humaine</strong> (Schröder, Morgenroth, Kuhl, Vaquet, Paaßen, 2025)."},
+  {q:"Format de reporting d'une ANOVA ?",a:"<strong>F(df1, df2) = X.XX, p = .XX</strong><br>Ex : <em>'A one-way ANOVA revealed a significant effect of campaign on guilt feelings, F(3, 116) = 4.10, p = .008.'</em>"}
+];
+
+VIEWS.flashcards = `
+<h2 class="session-title">Flashcards</h2>
+<div class="session-meta">${FLASHCARDS.length} CARTES · MÉMORISATION ACTIVE</div>
+<p class="lede">Cliquer sur la carte pour la retourner. La mémorisation active est <strong>scientifiquement supérieure</strong> à la relecture passive.</p>
+
+<div class="fc-container">
+<div class="flashcard" id="fc" onclick="flipCard()">
+  <div class="fc-inner">
+    <div class="fc-face fc-front">
+      <div class="kicker">QUESTION</div>
+      <div class="question" id="fc-q">…</div>
+      <div class="hint">Cliquer pour retourner</div>
+    </div>
+    <div class="fc-face fc-back">
+      <div class="kicker">RÉPONSE</div>
+      <div class="answer" id="fc-a">…</div>
+    </div>
+  </div>
+</div>
+<div class="fc-controls">
+  <button class="btn ghost sm" onclick="prevCard(event)">← PRÉC.</button>
+  <span class="fc-counter"><strong id="fc-i">1</strong> / ${FLASHCARDS.length}</span>
+  <button class="btn sm" onclick="nextCard(event)">SUIV. →</button>
+</div>
+<div style="margin-top:12px;text-align:center"><button class="btn ghost sm" onclick="shuffleCards()">⤭ MÉLANGER</button></div>
+</div>
+`;
+
+// ============ QUIZ ============
+const QUIZ = [
+  {q:"Quelle est la principale différence entre un survey et une expérience ?",opts:["Le survey utilise plus de participants","L'expérience établit la causalité, le survey mesure des relations","Le survey est plus rapide à analyser","L'expérience est moins fiable"],correct:1,exp:"Surveys mesurent des relations · Expériences établissent la causalité grâce à la manipulation de l'IV et au random assignment. C'est LA distinction centrale du cours."},
+  {q:"Quel est le seuil minimum acceptable de Cronbach's alpha ?",opts:["0.5","0.6","0.7","0.9"],correct:2,exp:"α ≥ 0.7 est le seuil acceptable standard. ≥0.8 bon, ≥0.9 excellent."},
+  {q:"En sciences sociales, à partir de quelle valeur p un résultat est-il 'statistiquement significatif' ?",opts:["p < 0.001","p < 0.01","p < 0.05","p < 0.10"],correct:2,exp:"p < 0.05 est le seuil standard en sciences sociales. p < 0.001 (***), p < 0.01 (**), p < 0.05 (*)."},
+  {q:"Quel test statistique pour comparer les moyennes de 4 groupes (IV nominal, DV métrique) ?",opts:["t-test indépendant","One-way ANOVA","Régression linéaire","Chi-square"],correct:1,exp:"One-way ANOVA pour 3+ groupes. Pour 2 groupes seulement : t-test."},
+  {q:"Que protège le random assignment ?",opts:["La validité externe","La validité interne","La fiabilité","La représentativité"],correct:1,exp:"Random assignment = validité interne (la conclusion causale est-elle correcte). Random sampling = validité externe (généralisation)."},
+  {q:"Cas WWF : combien de participants au total après nettoyage ?",opts:["100","120","150","152"],correct:1,exp:"152 collectés - 21 incomplets - 11 sans consentement = 120 valides, soit 30 par condition."},
+  {q:"Quelle est la 1ère phase de l'analyse thématique de Braun & Clarke ?",opts:["Recherche de thèmes","Codage initial","Familiarisation avec les données","Définition des thèmes"],correct:2,exp:"Les 6 phases : (1) Familiarisation, (2) Codes initiaux, (3) Recherche thèmes, (4) Révision, (5) Définition/nommage, (6) Rédaction."},
+  {q:"Quel biais consiste à répondre la même chose à toutes les questions ?",opts:["Acquiescence","Social desirability","Straightlining","Common method"],correct:2,exp:"Straightlining = même réponse partout. Solution : attention checks + reverse-coded items."},
+  {q:"Quel sampling consiste à recruter via les références d'anciens participants ?",opts:["Purposive","Convenience","Snowball","Stratified"],correct:2,exp:"Snowball sampling : sélection par référencements. Purposive = critère a priori. Convenience = accessibilité."},
+  {q:"Qu'est-ce que la 'data saturation' en recherche qualitative ?",opts:["Quand on a trop de données pour analyser","Le point où les nouvelles données sont redondantes","Le nombre minimum de participants requis","La validité externe"],correct:1,exp:"Data saturation (Moser & Korstjens, 2018) : point où collecter plus de données ne produit que de la redondance."},
+  {q:"Cas WWF : quelles campagnes ont généré le plus de dons ?",opts:["Panda et Deer","Rainforest et Rhino","Rainforest seulement","Toutes équivalentes"],correct:1,exp:"Rainforest (M=4.73€) et Rhino (M=3.93€) ont généré significativement plus que Panda (1.93€) et Deer (2.00€), p<.001."},
+  {q:"Le test de Levene avec p = 0.30, qu'en conclure ?",opts:["Les variances diffèrent → Welch","Les variances sont égales → ANOVA standard OK","L'ANOVA est non significative","Il faut faire un post-hoc"],correct:1,exp:"p > 0.05 dans Levene = variances homogènes (assumption met) → ANOVA standard OK."},
+  {q:"Quelles sont les 3 conditions pour établir la causalité ?",opts:["Random sampling, taille échantillon, fiabilité","Covariation, précédence temporelle, pas d'alternative","p<0.05, n>30, contrôle","Validité interne, externe, écologique"],correct:1,exp:"Les 3 conditions : (1) Covariation, (2) Précédence temporelle, (3) Pas d'explication alternative. Seules les expériences les atteignent toutes."},
+  {q:"Quel test post-hoc est le plus courant après ANOVA ?",opts:["Bonferroni","Tukey HSD","Scheffé","Dunnett"],correct:1,exp:"Tukey HSD (Honestly Significant Difference, Tukey 1949) — le plus courant et conservateur. Contrôle le family-wise error rate."},
+  {q:"Pourquoi utiliser des items reverse-coded ?",opts:["Pour rendre le survey plus court","Pour détecter l'acquiescence et le straightlining","Pour augmenter Cronbach's alpha","Pour cacher la VD"],correct:1,exp:"Reverse-coded = items formulés à l'opposé. Détecte les répondants qui approuvent tout ou cochent la même réponse partout."},
+  {q:"Qu'est-ce qu'une question 'double-barreled' ?",opts:["Une question avec deux options","Une question qui en contient deux distinctes","Une question à choix multiples","Une question sensible"],correct:1,exp:"Double-barreled = pose deux questions en une (ex : 'Cette marque est innovante ET fiable ?')."},
+  {q:"Aaker (1997) a identifié combien de dimensions de personnalité de marque ?",opts:["3","5","7","10"],correct:1,exp:"5 dimensions : Sincerity, Excitement, Competence, Sophistication, Ruggedness."},
+  {q:"Dans le cas Obama 2012, quel pourcentage d'augmentation des conversions de dons en ligne ?",opts:["+25%","+49%","+161%","+379%"],correct:1,exp:"+49% sur les conversions de dons. Sign-ups +161%. 500+ A/B tests menés. +379% c'est la performance vs Romney."},
+  {q:"Cas WWF : pour la VD 'sense of responsibility', F(3,116)=1.875, p=.138. Conclusion ?",opts:["Effet significatif","Aucune différence significative","Il faut faire un post-hoc","Variances non homogènes"],correct:1,exp:"p = .138 > 0.05 → non significatif. Les 4 visuels ne produisent pas de différences en responsabilité."},
+  {q:"Quel design garantit qu'un participant ne voit qu'UNE seule condition ?",opts:["Within-subjects","Between-subjects","Mixed","Factorial"],correct:1,exp:"Between-subjects = un participant, une condition. Within = chaque participant voit toutes les conditions."},
+  {q:"Où placer les attention/manipulation checks dans un survey ?",opts:["Au tout début","Avant la VD","Après la VD","À la fin avec le debriefing"],correct:2,exp:"TOUJOURS APRÈS la VD pour éviter le priming. Sinon on alerte le participant et on biaise sa réponse."},
+  {q:"Quel outil est utilisé pour le codage qualitatif dans le cours ?",opts:["NVivo","Atlas.ti","Taguette","MAXQDA"],correct:2,exp:"Taguette (app.taguette.org) — gratuit et collaboratif. Workflow : Import → Tag → Review → Export."},
+  {q:"En sciences sociales, quelle valeur de R² est commune en régression ?",opts:["0.02–0.15","0.30–0.50","0.70–0.90","Toujours > 0.95"],correct:0,exp:"En sciences sociales, R² faible (0.02–0.15) est commun car les comportements humains sont multifactoriels."},
+  {q:"Le rapport final du projet Matrix doit contenir combien de sections ?",opts:["5","6","8","10"],correct:2,exp:"8 sections : Intro, Design & collecte, Analyses, Interprétation, Conclusions/reco, Limitations, Références, Contributions individuelles."},
+  {q:"Garvey, Kim & Duhachek (2021) ont trouvé quel pattern AI vs Humain ?",opts:["L'AI est toujours préférée","L'humain est toujours préféré","Une interaction : AI pour bad news, humain pour good news","Aucun effet"],correct:2,exp:"Interaction Type d'agent × Valence : bad news → AI préférée ; good news → humain préféré. Pas d'effet principal seul."},
+  {q:"Goldstein, Cialdini & Griskevicius (2008) ont mesuré quelle augmentation de réutilisation des serviettes via norme sociale ?",opts:["+10%","+33%","+50%","+75%"],correct:1,exp:"+33% avec le message '75% of guests in this room reuse their towels' vs message standard environnemental."},
+  {q:"Mediation répond à quelle question ?",opts:["WHAT","HOW","FOR WHOM","WHEN"],correct:1,exp:"Mediation = HOW does it work? (mécanisme psychologique). Moderation = FOR WHOM."},
+  {q:"Quelle est la deadline de soumission du rapport Matrix ?",opts:["23h59 le jour de S8","23h59 la veille de S8","23h59 le jour de S9","Jour de l'examen final"],correct:1,exp:"Submit slides + report + data : 23h59 LA VEILLE de la Session 8. Pas le jour J."}
+];
+
+VIEWS.quiz = `
+<h2 class="session-title">Quiz Examen Blanc</h2>
+<div class="session-meta">${QUIZ.length} QCM AUTO-CORRIGÉS · TOUTES SESSIONS</div>
+<p class="lede">Cliquer sur une option pour répondre. L'explication apparaît immédiatement.</p>
+<div id="quiz-list"></div>
+<div class="quiz-score">
+  <div>
+    <div class="score-label">Score</div>
+    <div class="score-value" id="score-text">0 / 0</div>
+  </div>
+  <button class="btn ghost sm" onclick="resetQuiz()" style="background:transparent;color:#fff;border-color:#fff">RECOMMENCER</button>
+</div>
+`;
+
+// ============ APP LOGIC ============
+function buildNav(){
+  document.getElementById('nav').innerHTML = SESSIONS.map(s=>{
+    const badge = s.badge ? `<span class="badge">${s.badge}</span>` : '';
+    return `<button data-id="${s.id}" onclick="go('${s.id}')">${s.label}${badge}</button>`;
+  }).join('');
+}
+
+function go(id){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
+  document.getElementById('main').innerHTML = `<div class="view active">${VIEWS[id]||'<p>Section introuvable</p>'}</div>`;
+  if(id==='glossary')renderGlossary('');
+  if(id==='flashcards')initFlashcards();
+  if(id==='quiz')renderQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Glossary
+function renderGlossary(filter){
+  const list = document.getElementById('gloss-list');
+  if(!list)return;
+  const f = (filter||'').toLowerCase().trim();
+  const items = GLOSSARY.filter(g=>!f||g.term.toLowerCase().includes(f)||g.def.toLowerCase().includes(f));
+  list.innerHTML = items.length
+    ? items.sort((a,b)=>a.term.localeCompare(b.term)).map(g=>`<div class="gloss-item"><div class="term">${g.term}</div><div class="def">${g.def}</div></div>`).join('')
+    : '<p class="lede">Aucun résultat.</p>';
+}
+
+// Flashcards
+let fcIdx=0, fcOrder=[...Array(FLASHCARDS.length).keys()];
+function initFlashcards(){fcIdx=0;renderCard()}
+function renderCard(){
+  const card = FLASHCARDS[fcOrder[fcIdx]];
+  const el = document.getElementById('fc'); if(!el)return;
+  el.classList.remove('flipped');
+  document.getElementById('fc-q').innerHTML = card.q;
+  document.getElementById('fc-a').innerHTML = card.a;
+  document.getElementById('fc-i').textContent = fcIdx+1;
+}
+function flipCard(){document.getElementById('fc').classList.toggle('flipped')}
+function nextCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx+1)%FLASHCARDS.length;renderCard()}
+function prevCard(e){if(e)e.stopPropagation();fcIdx=(fcIdx-1+FLASHCARDS.length)%FLASHCARDS.length;renderCard()}
+function shuffleCards(){fcOrder.sort(()=>Math.random()-.5);fcIdx=0;renderCard()}
+
+// Quiz
+let answered={};
+function renderQuiz(){
+  answered={};
+  document.getElementById('quiz-list').innerHTML = QUIZ.map((q,i)=>`
+    <div class="quiz-q" id="q${i}">
+      <div class="qmeta">QUESTION ${i+1} / ${QUIZ.length}</div>
+      <div class="qtxt">${q.q}</div>
+      ${q.opts.map((o,j)=>`<button class="quiz-opt" onclick="answer(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      <div class="quiz-explain" id="exp${i}"><strong>Explication :</strong> ${q.exp}</div>
+    </div>`).join('');
+  updateScore();
+}
+function answer(qi,oi){
+  if(answered[qi]!==undefined)return;
+  answered[qi]=oi;
+  const correct = QUIZ[qi].correct;
+  document.querySelectorAll(`#q${qi} .quiz-opt`).forEach((el,idx)=>{
+    el.classList.add('disabled');
+    if(idx===correct)el.classList.add('correct');
+    else if(idx===oi)el.classList.add('incorrect');
+  });
+  document.getElementById('exp'+qi).classList.add('show');
+  updateScore();
+}
+function updateScore(){
+  const total = Object.keys(answered).length;
+  const correct = Object.entries(answered).filter(([k,v])=>QUIZ[k].correct===+v).length;
+  document.getElementById('score-text').textContent = `${correct} / ${total}${total>0?` (${Math.round(correct/total*100)}%)`:''}`;
+}
+function resetQuiz(){renderQuiz();window.scrollTo({top:0,behavior:'smooth'})}
+
+// Search
+document.getElementById('search').addEventListener('input',e=>{
+  const q = e.target.value.toLowerCase().trim();
+  if(!q){go('home');return}
+  let html = `<h2 class="session-title">Résultats : "${e.target.value}"</h2><div class="session-meta">RECHERCHE FULL-TEXT</div>`;
+  const matches = [];
+  Object.entries(VIEWS).forEach(([id,htmlContent])=>{
+    if(['home','glossary','flashcards','quiz'].includes(id))return;
+    const text = htmlContent.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+    const idx = text.toLowerCase().indexOf(q);
+    if(idx>=0){
+      const start = Math.max(0,idx-80), end = Math.min(text.length,idx+200);
+      const snippet = text.slice(start,end).replace(new RegExp(q,'gi'),m=>`<span class="search-hit">${m}</span>`);
+      const session = SESSIONS.find(s=>s.id===id);
+      matches.push(`<div class="search-hit-card"><div class="ctx">${session.label}</div><div class="snip">…${snippet}…</div><button class="btn sm" onclick="document.getElementById('search').value='';go('${id}')">OUVRIR →</button></div>`);
+    }
+  });
+  GLOSSARY.forEach(g=>{
+    if(g.term.toLowerCase().includes(q)||g.def.toLowerCase().includes(q)){
+      matches.push(`<div class="search-hit-card"><div class="ctx">GLOSSAIRE · ${g.term}</div><div class="snip">${g.def.replace(new RegExp(q,'gi'),m=>`<span class="search-hit">${m}</span>`)}</div></div>`);
+    }
+  });
+  html += matches.length ? matches.join('') : '<p class="lede">Aucun résultat trouvé.</p>';
+  document.getElementById('main').innerHTML = `<div class="view active">${html}</div>`;
+});
+
+// Init
+buildNav();
+go('home');
+</script>
+</body>
+</html>
