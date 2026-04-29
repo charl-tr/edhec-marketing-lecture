@@ -738,8 +738,8 @@ const SESSIONS = [
   {id:'s1',label:'S1 · Quali',badge:'V1'},
   {id:'s2',label:'S2 · Quanti',badge:'V1'},
   {id:'s3',label:'S3 · Pratique',badge:'V1'},
-  {id:'s4',label:'S4 · Qualtrics',badge:'WIP'},
-  {id:'s6',label:'S6 · Analyse',badge:'WIP'},
+  {id:'s4',label:'S4 · Qualtrics',badge:'V1'},
+  {id:'s6',label:'S6 · Analyse',badge:'V1'},
   {id:'trees',label:'Arbres ▸'},
   {id:'glossary',label:'Glossaire'},
   {id:'flashcards',label:'Flashcards'},
@@ -748,7 +748,7 @@ const SESSIONS = [
 ];
 
 // Progress par session (% mastery — placeholder, à brancher plus tard sur résultats quiz)
-const PROGRESS = {s1:30,s2:25,s3:60,s4:0,s6:0};
+const PROGRESS = {s1:30,s2:25,s3:60,s4:0,s6:0}; // updated via computeReadiness() from quiz localStorage
 
 // ============ HOMEPAGE ============
 const VIEWS = {};
